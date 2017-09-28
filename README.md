@@ -3,7 +3,7 @@
 
 Hey everyone. So glad this project is coming together. Please feel free to add a change to this readme, or throw another file in under another folder, just so we can all get in the habit of working with this repo, since hopefully we will be here a lot.
 
-Once again our meeting will take place Wednesday, Sept. 27, at 2 PM EST to introduce ourselves and discuss our gameplan. 
+Next meeting is at 2 PM , Friday Sept. 29 to discuss Feasibility and Implementation for the first sprint! 
 
 Testing git.
 
