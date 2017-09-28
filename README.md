@@ -8,3 +8,5 @@ Once again our meeting will take place Wednesday, Sept. 27, at 2 PM EST to intro
 Testing git.
 
 Cheers!
+
+Act I Milestone has been complete. We have decided as a team to work on a tier 2 project and clone the MomentumDash Chrome Extension.
