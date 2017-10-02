@@ -1,12 +1,14 @@
 # Voyage2-Turtles-03
 
 
-Hey everyone. So glad this project is coming together. Please feel free to add a change to this readme, or throw another file in under another folder, just so we can all get in the habit of working with this repo, since hopefully we will be here a lot.
+Turtles 03 is proud to say that we have reached Act II and have begun implementation of the Chrome Dashboard with Group integration ( web chat, group editing of to do tasks, etc.)
 
-Next meeting is at 2 PM , Friday Sept. 29 to discuss Feasibility and Implementation for the first sprint! 
+Changelog:
 
-Testing git.
+Implemented React Template.
 
-Cheers!
+Constructed Firebase back-end for Database and hosting.
 
-Act I Milestone has been complete. We have decided as a team to work on a tier 2 project and clone the MomentumDash Chrome Extension.
+Database controls will come once there is a front-end to be interacted with.
+
+Cheers to our team for making this project move along.
