@@ -13,7 +13,11 @@ class App extends Component {
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+ 
+         This is officially now in Act II Development. Building input components with  a single task query, that will lead to welcome
+        screen with static time stamp will be the first components, due sometime soon! 
+      
+         Come back soon and see what we've done!</p>
       </div>
     );
   }
