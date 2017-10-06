@@ -9,7 +9,7 @@ let imgUrl = 'https://goo.gl/wHSrKi';
 	const styles = {
 
 		background: {
-		background: 'url(' + imgUrl + ')',
+		background: `url(${imgUrl})`,
 		backgroundSize: 'cover',
 		width: '100vw',
 		height: '100vh',
