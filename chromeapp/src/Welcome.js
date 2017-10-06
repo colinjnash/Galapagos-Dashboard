@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Welcome.css';
+import fire from './fire';
 
 const styles = {
 
@@ -24,7 +25,7 @@ class Welcome extends Component {
 
 	render() {
 
-	return	<form onSubmit={this.props.onSubmit} id="askname" className="askName" placeholder="What's your name?">
+	return	<form onSubmit={this.props.submit} id="askname" className="askName" placeholder="What's your name?">
 	<p> What is your name? </p>
 		<input type="text" style={styles.input}/>
 		</form>;
