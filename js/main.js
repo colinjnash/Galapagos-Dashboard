@@ -1,6 +1,8 @@
 // Script to load random background
-document.body.onload = changeBackground();
-document.body.onload = buildClock();
+document.body.onload = function() {
+	changeBackground(); 
+	buildClock()
+};
 
 function changeBackground() {
 	let arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
