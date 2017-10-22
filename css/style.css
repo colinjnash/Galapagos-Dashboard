@@ -68,3 +68,24 @@
 	color: #fff;
 	font-size: 64px;
 }
+
+.mainBody label {
+	margin-top: 20%;
+}
+
+.inputStyle h2 {
+	color: #fff;
+}
+
+.inputStyle input{
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid #fff;
+	width: 100%;
+	color: #fff;
+}
+
+
+.red {
+	background: red;
+}
