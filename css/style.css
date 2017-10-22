@@ -1,0 +1,70 @@
+/*****
+==========TABLE OF CONTENTS==========
+	1. Navigation
+	2. Main Area
+
+********************************************************/
+
+/** 1. Navigation 
+********************************************************/
+.leftNav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #333;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+}
+
+.leftNav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.leftNav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+.openMenu {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	font-size: 32px;
+	background-color: #fff;
+	border-radius: 10%;
+	padding: 0 10px;
+}
+
+.openMenu span {
+	line-height: 1.5;
+}
+
+.openMenu:hover {
+	color: #fff;
+	background:	#333;
+}
+
+
+
+/** 2.Main Area
+********************************************************/
+.mainBody {
+	margin-top: 20%;
+}
+
+.mainBody h1 {
+	color: #fff;
+	font-size: 64px;
+}

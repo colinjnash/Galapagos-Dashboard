@@ -7,8 +7,8 @@
 		<title>Turtles 3 Project</title>
 		<meta name="description" content="The HTML5 Herald">
 		<meta name="author" content="SitePoint">
-
-		<link rel="stylesheet" href="css/styles.css?v=1.0">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/style.css">
 
 		<!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -16,18 +16,30 @@
 	</head>
 
 	<body>
+		<header>
+			<div id="leftNav" class="leftNav">
+				<a href="javascript:void(0)" id="closeMenu" class="closebtn"">&times;</a>
+				<a href="#">About</a>
+				<a href="#">Calculator</a>
+				<a href="#">Live Steams</a>
+				<a href="#">Contact</a>
+			</div>
+			<div class="openMenu">
+				<span id="openMenu" class="glyphicon glyphicon-th-list"></span>
+			</div>
+		<header>
 
-		<div id="leftNav">
-			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">About</a>
-			<a href="#">Calculator</a>
-			<a href="#">Live Steams</a>
-			<a href="#"> 
-		</div>
-		<h1>This is where our app will go!</h1>
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-sm-offset-2 col-sm-8 mainBody">
+					<h1>Turtles Project 3</h1>
+					<h1 id="clock">Clock</h1>
+				</div>
+			</div>
+		
 
-		<button id='change'>Try Me!</button>
-
+		
+		<script src='js/main.js'></script>
 	</body>
-	<script src='js/main.js'></script>
+	
 </html>
