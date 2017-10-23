@@ -37,10 +37,10 @@ function buildClock() {
 	let clock = new Date();
 	let h = clock.getHours();
 	let m = clock.getMinutes();
-	let s = clock.getSeconds();
+	// let s = clock.getSeconds();
 
 	m = addZero(m);
-	s = addZero(s);		
+	// s = addZero(s);		
 
 	let t = setTimeout(buildClock, 500);
 	let dayNight = 'AM';
@@ -50,7 +50,7 @@ function buildClock() {
 		h -= 12; 
 	}
 
-	document.getElementById('clock').innerHTML = h + ':' + m + ':' + s + dayNight;
+	document.getElementById('clock').innerHTML = h + ':' + m + dayNight;
 }
 
 function addZero(i) {
@@ -63,14 +63,13 @@ function addZero(i) {
 /* To Do List
 *********************************************/
 // Loads data from input to list on right side bar
-document.getElementById('submit').onclick = function toDoList() {
+document.getElementById('submit').onclick = function insertItem() {
 	let toDo = [];
 	let item = document.getElementById('toDoItem');
-
 	toDo.push(item.value);
 
-	document.getElementById('rightNav').innerHTML += '</li>' + toDo + '</li>';
+	document.getElementById('rightNav').innerHTML += '<li>' + toDo + '</li>';
 
-	console.log(toDo);
+	// Clear out the input field
+	item.value = '';
 }
-
