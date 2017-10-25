@@ -1,9 +1,27 @@
 /*****
 ==========TABLE OF CONTENTS==========
+	0. Action Classes
 	1. Navigation
 	2. Main Area
 
+
+
 ********************************************************/
+
+/** 0. Action Classes
+********************************************************/
+
+#welcome.hidden {
+	display: 0;
+}
+
+#welcome {
+	display: inherit;
+	transition: all .7s;
+}
+
+
+/*********************************************************/
 
 /** 1. Navigation 
 ********************************************************/
@@ -27,6 +45,8 @@
 .rightNav {
 	right: 0;
 	width: 250px;
+	background: transparent;
+	height: 50%;
 }
 
 .leftNav a,
@@ -34,7 +54,7 @@
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
 	font-size: 25px;
-	color: #818181;
+	color: black;
 	display: block;
 	transition: 0.3s;
 }
@@ -80,7 +100,7 @@
 }
 
 .mainBody label {
-	margin-top: 10%;
+	margin-top: 5%;
 }
 
 .inputStyle h2 {
@@ -99,3 +119,13 @@
 .red {
 	background: red;
 }
+
+input {
+	margin: 5% auto;
+	outline: none;
+	font-size: 3em;
+	text-align: center;
+}
+
+
+
