@@ -13,7 +13,11 @@
 /* Onload Scripts
  *********************************************/
 $(document).ready(function($) {
-	$('#welcome').hide().fadeIn('slow');
+
+
+
+
+	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {
 		$('#welcome').removeClass('hidden');
 	});
@@ -115,7 +119,7 @@ $(document).ready(function($) {
 		});
 		event.stopPropagation();
 	});
-});
+
 
 
 	// ToDoDiv Toggle
@@ -125,8 +129,18 @@ $(document).ready(function($) {
 	});
 
 
+// ********************WEATHER TRIAL *******************************
 
+if(navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(function (success, error, options) {
+		if(error) {
+			console.log(error);
+		} else {
+				console.log(success);
+			}
+		})
+} else {
+	console.log('Geolocation is not supported');
+}
 
-
-
-
+});
