@@ -131,16 +131,35 @@ $(document).ready(function($) {
 
 // ********************WEATHER TRIAL *******************************
 
-if(navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(function (success, error, options) {
-		if(error) {
-			console.log(error);
-		} else {
-				console.log(success);
+
+	if(navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position, error) {
+			if(error) {
+				console.log(error);
+			} else {
+				let lat = position.coords.latitude;
+				let long = position.coords.longitude;
+				var url = "https://api.darksky.net/forecast/de76a4cf1da02a6495cc56ff1fbcc8cc/" + lat + ',' +
+				long + '?units=auto';
+				$.ajax({
+					url: url,
+					type: 'GET',
+					dataType: 'jsonp',
+					success: function(data) {
+						var skycons = new Skycons({"color": "white"});
+						var icon = data.currently.icon;
+						var temp = Math.round(data.currently.temperature);
+						$('#wxtemp').html(temp + '&deg;C');
+						skycons.add("wxIcons", icon);
+						
+						console.log(data);
+					
+					}
+				});
 			}
-		})
-} else {
-	console.log('Geolocation is not supported');
-}
+
+		});
+	}
+
 
 });

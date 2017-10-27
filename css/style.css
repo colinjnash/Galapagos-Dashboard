@@ -202,3 +202,10 @@ input {
     background: none;
 }
 
+div.row.bottom  {
+    font-size: 1em;
+    color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    float: right;
+}
+
