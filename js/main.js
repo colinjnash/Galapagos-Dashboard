@@ -26,12 +26,12 @@ $(document).ready(function($) {
 	changeBackground();
 	buildClock();
 
-   
-	
+
+
 
 	function changeBackground() {
 		var arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
-		$('body').css("background-image","url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
+		$('body').css("background-image", "url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
 	}
 
 	// Fade in the div
@@ -94,7 +94,7 @@ $(document).ready(function($) {
 	$('input#toDoItem').keypress(function(e) {
 
 		if (e.which === 13) {
-			
+
 			let toDoText = $(this).val();
 
 
@@ -107,14 +107,14 @@ $(document).ready(function($) {
 
 	});
 
-	$('span').on('click', function(){
+	$('span').on('click', function() {
 
 	});
 
 	// ToDoToggle Functionality
-	 // *****************************************************************/
+	// *****************************************************************/
 	$(document).on('click', '.delete', function(event) {
-		$(this).parent().fadeOut(300,function(){
+		$(this).parent().fadeOut(300, function() {
 			$(this).remove();
 		});
 		event.stopPropagation();
@@ -124,23 +124,35 @@ $(document).ready(function($) {
 
 	// ToDoDiv Toggle
 
-	$('#toDoTitle').on('click', function(){
+	$('#toDoTitle').on('click', function() {
 		$('#toggleList').toggleClass("hidden");
 	});
 
 
-// ********************WEATHER TRIAL *******************************
+	// ********************WEATHER TRIAL *******************************
 
 
-	if(navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(function (position, error) {
-			if(error) {
-				console.log(error);
-			} else {
-				let lat = position.coords.latitude;
-				let long = position.coords.longitude;
+	// DEPRECATED DUE TO BEST PRACTICES ACCORDING TO GOOGLE DEVELOPERS
+
+	// if(navigator.geolocation) {
+	// 	navigator.geolocation.getCurrentPosition(function (position, error) {
+	// 		if(error) {
+	// 			console.log(err or);
+	// 		} else {
+
+	function wxPop() {
+		$.ajax({
+			url: 'https://ipinfo.io/json',
+			type: 'GET',
+			dataType: 'jsonp',
+			success: function(location) {
+				
+				var latlong = location.loc.split(",");
+				var lat = latlong[0];
+				var long = latlong[1];
 				var url = "https://api.darksky.net/forecast/de76a4cf1da02a6495cc56ff1fbcc8cc/" + lat + ',' +
-				long + '?units=auto';
+					long + '?units=auto';
+				
 				$.ajax({
 					url: url,
 					type: 'GET',
@@ -148,20 +160,26 @@ $(document).ready(function($) {
 					success: function(data) {
 
 						// NESTED SKYCONS....WILL NEED TO MODULIZE THIS FOR FASTER LOADING
-						var skycons = new Skycons({"color": "white"});
+						var skycons = new Skycons({ "color": "white" });
 						var icon = data.currently.icon;
 						var temp = Math.round(data.currently.temperature);
 						$('#wxtemp').html(temp + '&deg;C');
 						skycons.add("wxIcons", icon);
-						skycons.play()
-						console.log(data);
-					
+						skycons.play();
+
+					},
+
+					error: function(error) {
+						console.log(error);
 					}
 				});
 			}
-
 		});
+
+
+
 	}
 
+	wxPop();
 
 });
