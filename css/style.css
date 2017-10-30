@@ -52,10 +52,12 @@ body {
     position: fixed;
     z-index: 1;
     top: 0;
-    background-color: #333;
+    background-color: rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
+
 }
 
 .leftNav {
@@ -63,7 +65,7 @@ body {
 }
 
 .rightNav {
-    right: 0;
+    right: 2%;
     width: 250px;
     background: transparent;
     min-height: 25%;
@@ -73,10 +75,10 @@ body {
 .rightNav li {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: black;
+    font-size: 18px;
+    color: white;
     display: block;
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
 .leftNav .closebtn {
@@ -91,29 +93,28 @@ body {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    font-size: 32px;
-    background-color: #fff;
-    border-radius: 10%;
+    font-size: 28px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5%;
     padding: 0 10px;
 }
 
 .openMenu span {
     line-height: 1.5;
+    font-size: 30px;
 }
 
 .openMenu:hover {
-    color: #fff;
-    background: #333;
+    color: #ccc;
+    background: transparent;
 }
-
-
-
 
 /** 2.Main Area
 ********************************************************/
 
 .mainBody {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .mainBody h1 {
@@ -216,5 +217,22 @@ div.row.bottom  {
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     float: right;
+    width: 100%;
+    height: auto;
 }
 
+#weather {
+    margin-top: 10%;
+       position: relative;
+    bottom: 0;
+   right: 2%;
+    font-size: 24px;
+    float: right;
+    height: auto;
+
+ 
+}
+
+#weather canvas {
+    margin-left: 20px;
+}

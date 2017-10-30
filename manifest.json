@@ -12,7 +12,9 @@
     },
 	
 	"permissions": [
-		"tabs"
+		"tabs",
+		"geolocation",
+		"activeTab"
 	],
 	
 	"chrome_url_overrides": {
