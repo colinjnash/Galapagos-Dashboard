@@ -31,7 +31,7 @@ $(document).ready(function($) {
 
 	function changeBackground() {
 		var arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
-		document.body.style.background = "url('img/" + arr[Math.floor((Math.random() * 3))] + "')";
+		$('body').css("background-image","url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
 	}
 
 	// Fade in the div
@@ -146,12 +146,14 @@ $(document).ready(function($) {
 					type: 'GET',
 					dataType: 'jsonp',
 					success: function(data) {
+
+						// NESTED SKYCONS....WILL NEED TO MODULIZE THIS FOR FASTER LOADING
 						var skycons = new Skycons({"color": "white"});
 						var icon = data.currently.icon;
 						var temp = Math.round(data.currently.temperature);
 						$('#wxtemp').html(temp + '&deg;C');
 						skycons.add("wxIcons", icon);
-						
+						skycons.play()
 						console.log(data);
 					
 					}
