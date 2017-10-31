@@ -158,14 +158,12 @@ input {
     transition: all .5s;
 }
 
-#toDoTitle {
-    font-size: 20px;
-    margin: 5 px;
-    padding: 5 px;
-}
+
 
 #toDoTitle {
-    font-size: 2em;
+     margin: 5 px;
+    padding: 5 px;
+    font-size: 1.5em;
     font-weight: 800;
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
@@ -191,12 +189,26 @@ input {
     min-height: 30px;
 }
 
+#toggleList > li.todo.completed {
+    text-decoration: line-through;
+    color: grey;
+     background-color: rgba(0, 0, 0, .2);
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    
+}
+
+
 #toggleList span {
     float: right;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     width: 0;
     opacity: 0;
     transition: 0.2s linear;
+    color: white;
+
 }
 
 #toggleList li:hover span {
