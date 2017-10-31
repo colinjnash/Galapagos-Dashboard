@@ -39,19 +39,34 @@
 				<div class="col-sm-offset-2 col-sm-8 mainBody hidden" id="welcome">
 					<h1>Welcome to your Dashboard</h1>
 					<h1 id="clock">The Clock is Broken!?</h1>
-					<form action="">
-					<label class="inputStyle">
-						<h2>What do you need to get done today?</h2>
-						<input type="text" id="toDoItem" name="toDoItem">
-					</label>
-					</form>
+
+
+      				<div class="todo-form form-group">
+      				  <h2>What do you want to get done today?</h2>
+      				  <form>
+      				    <div> 
+      				      <input type="text" id="todo" placeholder="Task"/>
+      				    </div>
+      				    <div>
+      				      <input type="text" id="user" placeholder="Assign user"/>
+      				    </div>
+      				    <button type="submit">Add Task</button>
+      				  </form>  
+      				</div>
+				
+
+
+
 				</div>
 				
 				<div id="rightNav" class="col-sm-2 text-right rightNav">
-					<p id="toDoTitle">To-Do</p>
-					<div id="toggleList">
-					<ul id="listItem"> 	
-					</ul>
+
+      			<div>
+      			  <h4 class="header">Todos</h4>
+      			  <ul id="todos"></ul>
+      			</div>
+
+
 				</div>
 				</div>
 		</div>
@@ -66,12 +81,11 @@
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+  		<script src='js/firebase.js'></script>
 		<script src='js/main.js'></script>
 		<script src='js/skycons.js'></script>
 		<script src="https://use.fontawesome.com/3cc79e2fae.js"></script>
-
-
-
 	</body>
 	
 </html>
