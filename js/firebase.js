@@ -54,5 +54,5 @@ ref.on("child_added", function(snapshot) {
 // adds the results to the homepage
 const addTodo = (todo, user, timeStamp) => {
   let todos = document.getElementById("todos");
-  todos.innerHTML += `<li>${todo} - ${user}</li>`;
+  todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
 };

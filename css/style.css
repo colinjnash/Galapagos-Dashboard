@@ -130,12 +130,16 @@ body {
     color: #fff;
 }
 
-.inputStyle input {
+ input[type="text"] {
     background: transparent;
     border: none;
     border-bottom: 2px solid #fff;
-    width: 100%;
+    width: 80%;
     color: #fff;
+       margin: 5% auto;
+    outline: none;
+    font-size: 2em;
+    text-align: center;
 }
 
 
@@ -144,10 +148,7 @@ body {
 }
 
 input {
-    margin: 5% auto;
-    outline: none;
-    font-size: 2em;
-    text-align: center;
+ 
 }
 
 
@@ -234,7 +235,6 @@ div.row.bottom  {
 }
 
 #weather {
-    margin-top: 10%;
        position: relative;
     bottom: 0;
    right: 2%;
