@@ -8,124 +8,231 @@
 
 ********************************************************/
 
+
+/*****************TEST CASES*************************/
+
+/*div {
+
+	border: 2px solid red;
+}
+*/
 /** 0. Action Classes
 ********************************************************/
+html {
+width: 100%;
+height: 100%;
+}
 
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 #welcome.hidden {
-	display: 0;
+    display: 0;
 }
 
 #welcome {
-	display: inherit;
-	transition: all .7s;
+    display: inherit;
+    transition: all .7s;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
 }
+
 
 
 /*********************************************************/
 
+
 /** 1. Navigation 
 ********************************************************/
+
 .leftNav,
 .rightNav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	background-color: #333;
-	overflow-x: hidden;
-	padding-top: 60px;
-	transition: 0.5s;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+
 }
 
 .leftNav {
-	left: 0;
+    left: 0;
 }
 
 .rightNav {
-	right: 0;
-	width: 250px;
-	background: transparent;
-	height: 50%;
+    right: 2%;
+    width: 250px;
+    background: transparent;
+    min-height: 25%;
 }
 
 .leftNav a,
 .rightNav li {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: black;
-	display: block;
-	transition: 0.3s;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.4s;
 }
 
 .leftNav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 .openMenu {
-	position: absolute;
-	bottom: 20px;
-	left: 20px;
-	font-size: 32px;
-	background-color: #fff;
-	border-radius: 10%;
-	padding: 0 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 28px;
+    background-color: transparent;
+    color: white;
+    border-radius: 5%;
+    padding: 0 10px;
 }
 
 .openMenu span {
-	line-height: 1.5;
+    line-height: 1.5;
+    font-size: 30px;
 }
 
 .openMenu:hover {
-	color: #fff;
-	background:	#333;
+    color: #ccc;
+    background: transparent;
 }
-
-
 
 /** 2.Main Area
 ********************************************************/
+
 .mainBody {
-	margin-top: 10%;
+    margin-top: 5%;
 }
 
 .mainBody h1 {
-	color: #fff;
-	font-size: 64px;
+    color: #fff;
+    font-size: 58px;
 }
 
 .mainBody label {
-	margin-top: 5%;
+    margin-top: 5%;
 }
 
 .inputStyle h2 {
-	color: #fff;
+    color: #fff;
 }
 
-.inputStyle input{
-	background: transparent;
-	border: none;
-	border-bottom: 2px solid #fff;
-	width: 100%;
-	color: #fff;
+.inputStyle input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #fff;
+    width: 100%;
+    color: #fff;
 }
 
 
 .red {
-	background: red;
+    background: red;
 }
 
 input {
-	margin: 5% auto;
-	outline: none;
-	font-size: 3em;
-	text-align: center;
+    margin: 5% auto;
+    outline: none;
+    font-size: 2em;
+    text-align: center;
 }
 
 
+/** TO DO LIST **/
 
+.hidden {
+    opacity: 0;
+    transition: all .5s;
+}
+
+#toDoTitle {
+    font-size: 20px;
+    margin: 5 px;
+    padding: 5 px;
+}
+
+#toDoTitle {
+    font-size: 2em;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+}
+
+#toggleList {
+    background-color: rgba(0, 0, 0, .0);
+    border-radius: 10px;
+    bottom: 0px;
+}
+
+#toggleList li {
+    color: white;
+    font-size: 1em;
+    text-align: left;
+    background-color: rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    border: none;
+    outline: none;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    min-height: 30px;
+}
+
+#toggleList span {
+    float: right;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    width: 0;
+    opacity: 0;
+    transition: 0.2s linear;
+}
+
+#toggleList li:hover span {
+    width: 30px;
+    opacity: 1;
+     background-color: rgba(225, 0, 0, .5);
+     text-align: center;
+      border-radius: 50px;
+     
+}
+
+#listItem {
+    background: none;
+}
+
+div.row.bottom  {
+    font-size: 1em;
+    color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    float: right;
+    width: 100%;
+    height: auto;
+}
+
+#weather {
+    margin-top: 10%;
+       position: relative;
+    bottom: 0;
+   right: 2%;
+    font-size: 24px;
+    float: right;
+    height: auto;
+
+ 
+}
+
+#weather canvas {
+    margin-left: 20px;
+}
