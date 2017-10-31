@@ -98,7 +98,7 @@ $(document).ready(function($) {
 			let toDoText = $(this).val();
 
 
-			$('#toggleList').append('<li class="todo">' + toDoText + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>');
+			$('#toggleList').append('<li class="todo" >' + '<input type="checkbox">' + toDoText + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>');
 
 			// Clear out the input field
 			$(this).val('');
@@ -120,7 +120,11 @@ $(document).ready(function($) {
 		event.stopPropagation();
 	});
 
+	$(document).on("click", 'input[type=checkbox]', function(event) {
+		$(this).parent().toggleClass('completed');
+		event.stopPropagation();
 
+	});
 
 	// ToDoDiv Toggle
 
