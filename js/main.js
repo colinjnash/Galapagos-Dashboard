@@ -88,34 +88,50 @@ $(document).ready(function($) {
 
 
 
-	/* To Do List
-	 *********************************************/
+	//*********************************************/
+
+
 	// Loads data from input to list on right side bar
-	$('input#toDoItem').keypress(function(e) {
+	// $('input#toDoItem').keypress(function(e) {
 
-		if (e.which === 13) {
+	// 	if (e.which === 13) {
 
-			let toDoText = $(this).val();
+	// 		let toDoText = $(this).val();
 
 
-			$('#toggleList').append('<li class="todo" >' + '<input type="checkbox">' + toDoText + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>');
+	// 		$('#toggleList').append('<li class="todo" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>');
 
-			// Clear out the input field
-			$(this).val('');
-			e.preventDefault();
-		}
+	// 		// Clear out the input field
+	// 		$(this).val('');
+	// 		e.preventDefault();
+	// 	}
 
-	});
+	// });
 
-	$('span').on('click', function() {
+	// $('span').on('click', function() {
 
-	});
+	// });
 
 	// ToDoToggle Functionality
 	// *****************************************************************/
 	$(document).on('click', '.delete', function(event) {
+		let content = $(this).parent().text().split(" ");
+		let key = content[0];
 		$(this).parent().fadeOut(300, function() {
-			$(this).remove();
+
+			// ***************************To Do List FIREBASE 
+
+			var ref = firebase.database().ref('/todos');
+			var query = ref.orderByChild('todo').equalTo(key);
+			// console.log(query);
+			query.on('value', function(snapshot) {
+				snapshot.forEach(function(data) {
+					var record = data.val();
+					if (record["todo"] == key) {
+						ref.child(data.key).remove();
+					}
+				});
+			});
 		});
 		event.stopPropagation();
 	});
