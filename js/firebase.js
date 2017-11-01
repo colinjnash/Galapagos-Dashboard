@@ -56,4 +56,3 @@ const addTodo = (todo, user, timeStamp) => {
 	todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
 };
 
-// Remove value from page

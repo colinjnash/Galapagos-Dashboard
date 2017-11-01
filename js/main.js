@@ -115,8 +115,8 @@ $(document).ready(function($) {
 	// ToDoToggle Functionality
 	// *****************************************************************/
 	$(document).on('click', '.delete', function(event) {
-		let content = $(this).parent().text().split(" ");
-		let key = content[0];
+		let content = $(this).parent().text().split("-");
+		let key = content[0].replace(/((\s*\S+)*)\s*/, "$1");
 		$(this).parent().fadeOut(300, function() {
 
 			// ***************************To Do List FIREBASE 

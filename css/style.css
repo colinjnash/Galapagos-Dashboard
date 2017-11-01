@@ -21,11 +21,17 @@
 html {
 width: 100%;
 height: 100%;
+color: white;
 }
 
 body {
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+h2 {
+    color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
 }
 #welcome.hidden {
     display: 0;
@@ -37,7 +43,10 @@ body {
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
 }
 
-
+.header {
+    color: white;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+}
 
 /*********************************************************/
 
@@ -66,14 +75,14 @@ body {
 
 .rightNav {
     right: 2%;
-    width: 250px;
+    width: 300px;
     background: transparent;
     min-height: 25%;
 }
 
 .leftNav a,
 .rightNav li {
-    padding: 8px 8px 8px 32px;
+    padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 18px;
     color: white;
@@ -89,7 +98,7 @@ body {
     margin-left: 50px;
 }
 
-.openMenu {
+.openMenu, {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -143,14 +152,6 @@ body {
 }
 
 
-.red {
-    background: red;
-}
-
-input {
- 
-}
-
 
 /** TO DO LIST **/
 
@@ -185,16 +186,11 @@ input {
     border: none;
     outline: none;
     margin: 5px;
-    padding: 5px;
+    padding-right: 5px;
     border-radius: 10px;
     min-height: 30px;
 }
 
-#toggleList > li.todo.completed {
-    text-decoration: line-through;
-    color: grey;
-     background-color: rgba(0, 0, 0, .2);
-}
 
 input[type="checkbox"] {
     margin-right: 10px;
@@ -217,7 +213,8 @@ input[type="checkbox"] {
     opacity: 1;
      background-color: rgba(225, 0, 0, .5);
      text-align: center;
-      border-radius: 50px;
+    border-radius: 30px;
+    display: inline;
      
 }
 
@@ -247,4 +244,10 @@ div.row.bottom  {
 
 #weather canvas {
     margin-left: 20px;
+}
+
+#todos > li.todoli.completed {
+         background-color: rgba(0, 0, 0, .1);
+
+    text-decoration: line-through;
 }
