@@ -56,3 +56,9 @@ const addTodo = (todo, user, timeStamp) => {
 	todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
 };
 
+chrome.identity.getAuthToken({}, function(token) {
+ var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+ firebase.auth().signInWithCredential(credential);
+});
+
+
