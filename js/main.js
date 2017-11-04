@@ -107,6 +107,8 @@ $(document).ready(function($) {
 					total -= value;
 				}	
 
+				x = [];
+
 				console.log(total);
 			}
 		}
