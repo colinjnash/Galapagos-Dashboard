@@ -79,6 +79,7 @@ h2 {
 }
 
 .leftNav a,
+.leftNav button,
 .rightNav li {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
@@ -115,6 +116,27 @@ h2 {
 .openMenu:hover {
     color: #ccc;
     background: transparent;
+}
+
+button.accordion {
+    border: none;
+    background: transparent;
+}
+
+button.accordion.active,
+button.accordion:hover {
+    font-color: #333;
+}
+
+div.panel {
+    background: transparent;
+    padding: 0 2%;  
+    display: none;  
+}
+
+div.panel > p,
+div.panel > ul > li {
+    color: #fff;
 }
 
 /** 2.Main Area

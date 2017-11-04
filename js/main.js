@@ -3,54 +3,65 @@
 		1. Onload Script:
 			-Change Background
 			-Clock
-		2. Nav Menu Scripts
-		3. Clock
-		4. To Do List
+		2. Random Background Image Script	
+		3. Nav Menu Scripts
+		4. Clock
+		5. To Do List
 ***************************************************************/
 
 // Optional JQUERY load
 
 /* Onload Scripts
  *********************************************/
+// Fade in the div
 $(document).ready(function($) {
-
-
-
-
 	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {
 		$('#welcome').removeClass('hidden');
 	});
 
-
+	// Execute Scripts Here!
 	changeBackground();
 	buildClock();
 
 
 
-
+	/* Random Background Image Script
+	 *********************************************/
 	function changeBackground() {
-		var arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
+		let arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
 		$('body').css("background-image", "url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
 	}
-
-	// Fade in the div
-
-
-
-
-
-
+	
 
 	/* Nav Menu
 	 *********************************************/
-	// Two functions to open and close side menu
+	// OPEN and CLOSE left navMenu	
 	document.getElementById('openMenu').onclick = function() {
 		document.getElementById('leftNav').style.width = '250px';
 	};
+
+
 	document.getElementById('closeMenu').onclick = function() {
 		document.getElementById('leftNav').style.width = '0';
 	};
+
+
+	// Accordion Menus Open and Close
+	const accItems = document.getElementsByClassName('accordion');
+
+	for ( let i = 0; i < accItems.length; i++ ) {
+		accItems[i].onclick = function() {
+			const panel = this.nextElementSibling;
+
+			if ( panel.style.display === 'block' ) {
+				panel.style.display = 'none';
+			} else {
+				panel.style.display = 'block';
+			}
+		}
+	}
+
 
 	/* Clock
 	 *********************************************/
@@ -86,6 +97,12 @@ $(document).ready(function($) {
 		return i;
 	}
 
+	/* Calculator 
+	 *************
+	
+		TODO!
+
+	 ********************************/
 
 
 	//*********************************************/
