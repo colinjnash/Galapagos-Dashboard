@@ -16,7 +16,6 @@ $(document).ready(function($) {
 
 
 
-
 	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {
 		$('#welcome').removeClass('hidden');
