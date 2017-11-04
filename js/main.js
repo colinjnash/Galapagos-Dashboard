@@ -107,8 +107,10 @@ $(document).ready(function($) {
 					total -= value;
 				}	
 
+
 				x = [];
 
+				document.getElementById('window_panel').innerHTML = total;
 				console.log(total);
 			}
 		}
