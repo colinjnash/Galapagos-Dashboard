@@ -23,6 +23,8 @@ $(document).ready(function($) {
 	// Execute Scripts Here!
 	changeBackground();
 	buildClock();
+	accordion_menu();
+	calculator();
 
 
 
@@ -48,19 +50,68 @@ $(document).ready(function($) {
 
 
 	// Accordion Menus Open and Close
-	const accItems = document.getElementsByClassName('accordion');
+	function accordion_menu() {
+		const accItems = document.getElementsByClassName('accordion');
 
-	for ( let i = 0; i < accItems.length; i++ ) {
-		accItems[i].onclick = function() {
-			const panel = this.nextElementSibling;
+		for ( let i = 0; i < accItems.length; i++ ) {
+			accItems[i].onclick = function() {
+				const panel = this.nextElementSibling;
 
-			if ( panel.style.display === 'block' ) {
-				panel.style.display = 'none';
-			} else {
-				panel.style.display = 'block';
+				if ( panel.style.display === 'block' ) {
+					panel.style.display = 'none';
+				} else {
+					panel.style.display = 'block';
+				}
 			}
 		}
 	}
+
+	/* Calculator 
+	 *********************************************/
+	function calculator() {
+		let total = 0;
+		let x = [];
+		let y = [];
+		const numbers = document.getElementsByClassName('numbers');
+		const equations = document.getElementsByClassName('equations');
+
+		// Iterate through number values on calc and will push into an array
+		for ( let i = 0; i < numbers.length; i++ ) {
+			numbers[i].onclick = function() {
+				x.push(numbers[i].value);
+				console.log(x);
+			}
+		}		
+
+		// Listens for equation symbol to be clicked
+		for ( let k = 0; k < equations.length; k++ ) {
+			equations[k].onclick = function() {
+				let e = equations[k].value;
+				console.log(e);
+
+				let value = Number(x.join(''));
+
+				if ( e == "+" ) {
+					total += value;
+				} 
+				else if ( e == "-" ) {
+					total -= value;
+				}	
+				else if ( e == "/" ) {
+					total -= value;
+				}
+				else if ( e == "*" ) {
+					total -= value;
+				}
+				else if ( e == "%" ) {
+					total -= value;
+				}	
+
+				console.log(total);
+			}
+		}
+	}
+
 
 
 	/* Clock
@@ -96,13 +147,6 @@ $(document).ready(function($) {
 		}
 		return i;
 	}
-
-	/* Calculator 
-	 *************
-	
-		TODO!
-
-	 ********************************/
 
 
 	//*********************************************/

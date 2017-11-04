@@ -164,9 +164,9 @@ div.panel > ul > li {
 
 #numKey {
     position: relative;
-    top: 100px;
-    left: -4px;
-    margin-left: 10%;
+    top: 12px;
+    right: 15px;
+    margin-left: 20%;
 }
 
 #numKey > div > div {
