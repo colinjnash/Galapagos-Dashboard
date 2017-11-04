@@ -3,10 +3,7 @@
 	0. Action Classes
 	1. Navigation
 	2. Main Area
-
-
-
-********************************************************/
+    3. To Do List
 
 
 /*****************TEST CASES*************************/
@@ -15,6 +12,7 @@
 
 	border: 2px solid red;
 }
+
 */
 /** 0. Action Classes
 ********************************************************/
@@ -98,7 +96,7 @@ h2 {
     margin-left: 50px;
 }
 
-.openMenu, {
+.openMenu {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -152,15 +150,12 @@ h2 {
 }
 
 
-
-/** TO DO LIST **/
-
+/** 3. To Do List
+********************************************************/
 .hidden {
     opacity: 0;
     transition: all .5s;
 }
-
-
 
 #toDoTitle {
      margin: 5 px;
@@ -191,12 +186,10 @@ h2 {
     min-height: 30px;
 }
 
-
 input[type="checkbox"] {
     margin-right: 10px;
     
 }
-
 
 #toggleList span {
     float: right;
@@ -238,8 +231,6 @@ div.row.bottom  {
     font-size: 24px;
     float: right;
     height: auto;
-
- 
 }
 
 #weather canvas {
