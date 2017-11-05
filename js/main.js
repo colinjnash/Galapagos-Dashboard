@@ -97,7 +97,6 @@ $(document).ready(function($) {
 
 					// Push value of number once equation has been clicked into arr X
 					arrNum.push(Number(value));
-					console.log('Pushing in arrNum: ' + arrNum);
 
 					// Reset main window to 0
 					window_panel.innerHTML = Number(total);
@@ -112,8 +111,10 @@ $(document).ready(function($) {
 							et = "+";							
 							break;
 						case "-":
+							console.log('Before: ' + total);
 							total -= Number(value);
 							et = "-";
+							console.log('After: ' + total);
 							break;
 						case "/":
 							total /= value;
