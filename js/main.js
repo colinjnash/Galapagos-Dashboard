@@ -69,101 +69,54 @@ $(document).ready(function($) {
 	/* Calculator 
 	 *********************************************/
 	function calculator() {				
-		const numbers = document.getElementsByClassName('numbers');
-		const equations = document.getElementsByClassName('equations');
 		const window_panel = document.getElementById('window_panel');
 		const sub_window_panel = document.getElementById('sub_window_panel');
+		const buttons = document.getElementsByClassName('calculator');
+		let screen = '';
 		let total = 0;
-		let value = 0;
-		let counter = 0;
-		let arrNum = [];
-		let et = '';
 
-		// Iterate through number values on calc and will push into an array
-		for ( let i = 0; i < numbers.length; i++ ) {			
-			numbers[i].onclick = function() {		
-				if ( window_panel.innerHTML == 0 ) {
-					window_panel.innerHTML = '';
-				}				
-				value = window_panel.innerHTML += numbers[i].value;					
-			}
-				
-			// Listens for equation symbol to be clicked
-			for ( let k = 0; k < equations.length; k++ ) {
-				equations[k].onclick = function() {
-					// Variables					
-					let e = equations[k].value;
-					
-
-					// Push value of number once equation has been clicked into arr X
-					arrNum.push(Number(value));
-
-					// Reset main window to 0
-					window_panel.innerHTML = Number(total);
-					
-					// Add value to the sub window for historical purposes
-					sub_window_panel.innerHTML += arrNum[counter] + ' ' + e + ' ';
-
-					// Equation Expressions				
-					switch(e) {
-						case "+":
-							total += Number(value);						
-							et = "+";							
-							break;
-						case "-":
-							console.log('Before: ' + total);
-							total -= Number(value);
-							et = "-";
-							console.log('After: ' + total);
-							break;
-						case "/":
-							total /= value;
-							et = "/";
-							break;
-						case "*":
-							total *= value;
-							et = "*";
-							break;
-						case "%":
-							total %= value;
-							et = "%";
-							break;
-						case "c":
-							total = 0;
-							window_panel.innerHTML = 0;
-							sub_window_panel.innerHTML = ''; 
-							console.log(arrNum);
-							break;
-						case "=":
-							switch(et) {
-								case "+":
-									total += Number(value);
-									break;
-								case "-":
-									total -= Number(value);
-									break;
-								case "*":
-									total *= Number(value);
-									break;
-								case "/":
-									total /= Number(value);
-									break;
-								case "%":
-									total %= Number(value);
-									break;
-							}	
-
-							// Print the new total to window panel
-							window_panel.innerHTML = total;		
-
-							break; //case =: break
-					}
-
-					// Empty the array after equation has been complete
-					counter++;							
+		for ( let i = 0; i < buttons.length; i ++ ) {
+			buttons[i].onclick = function() {
+				switch(this.value) {
+					case "c":
+						screen = '';
+						total = 0;
+						setText('');						
+						break;
+					case "=":
+						evaluate();
+						break;
+					case ".":
+						addPoint();
+						break;
+					case "bs":
+						backSpace();
+						break;
+					default:
+						screen = screen.concat(this.value);
+						setText(screen);
+						break;
 				}
 			}
 		}
+
+		function setText(n) {
+			window_panel.innerHTML = n;
+		}
+
+		function evaluate() {
+			total = eval(screen);
+			screen = String(total);
+			setText(screen);
+		}
+
+		function addPoint() {
+			if ( screen.indexOf('.' === -1) ) {
+				screen = screen.concat('.');
+				setText(screen);
+			}
+		}
+
 	}
 
 
