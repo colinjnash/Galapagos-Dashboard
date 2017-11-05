@@ -15,6 +15,18 @@
  *********************************************/
 // Fade in the div
 $(document).ready(function($) {
+  // Chrome Authentication Token
+  chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	
+  // Use the token.
+		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
+		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+		firebase.auth().signInWithCredential(provider).then(function(result){
+			var username = result.displayName;
+			$('#welcomeName').html(`Hello ${username}`);	
+		});
+	});
+
 	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {
 		$('#welcome').removeClass('hidden');
@@ -25,8 +37,6 @@ $(document).ready(function($) {
 	buildClock();
 	accordion_menu();
 	calculator();
-
-
 
 	/* Random Background Image Script
 	 *********************************************/
@@ -183,13 +193,15 @@ $(document).ready(function($) {
 	// ToDoToggle Functionality
 	// *****************************************************************/
 	$(document).on('click', '.delete', function(event) {
+		var uid= firebase.auth().currentUser.uid;
+
 		let content = $(this).parent().text().split("-");
 		let key = content[0].replace(/((\s*\S+)*)\s*/, "$1");
 		$(this).parent().fadeOut(300, function() {
 
 			// ***************************To Do List FIREBASE 
 
-			var ref = firebase.database().ref('/todos');
+			var ref = firebase.database().ref('/todos/'+ uid);
 			var query = ref.orderByChild('todo').equalTo(key);
 			// console.log(query);
 			query.on('value', function(snapshot) {
@@ -258,7 +270,8 @@ $(document).ready(function($) {
 					},
 
 					error: function(error) {
-						console.log(error);
+						console.log("error loading weather");
+
 					}
 				});
 			}
@@ -271,3 +284,10 @@ $(document).ready(function($) {
 	wxPop();
 
 });
+
+
+
+// *****************************************************************
+// Credential login
+// *****************************************************************
+
