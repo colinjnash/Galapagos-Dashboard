@@ -228,7 +228,7 @@ div.row.bottom  {
 }
 
 #weather {
-       position: relative;
+    position: relative;
     bottom: 0;
    right: 2%;
     font-size: 24px;
