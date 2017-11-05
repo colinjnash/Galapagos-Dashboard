@@ -14,6 +14,19 @@
  *********************************************/
 $(document).ready(function($) {
 
+	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	// Use the token.
+
+		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
+		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+		firebase.auth().signInWithCredential(provider).then(function(result){
+			var username = result.displayName;
+			$('#welcomeName').html(`Hello ${username}`);
+	
+		});
+
+
+	});
 
 
 	$('body').hide().fadeIn('slow');
@@ -189,7 +202,8 @@ $(document).ready(function($) {
 					},
 
 					error: function(error) {
-						console.log(error);
+						console.log("error loading weather");
+
 					}
 				});
 			}

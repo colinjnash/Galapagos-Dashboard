@@ -3,7 +3,7 @@
     "name": "Turtles 3 App",
     "author": "Voyage 2 Turtles 3",
     "version": "0.0.1",
- "content_security_policy":"script-src 'self' https://use.fontawesome.com https://www.gstatic.com/ https://*.firebaseio.com https://ipinfo.io/ https://www.googleapis.com; object-src 'self'",
+ "content_security_policy":"script-src 'self'  https://use.fontawesome.com https://www.gstatic.com/ https://*.firebaseio.com https://ipinfo.io/  https://api.darksky.net https://www.googleapis.com; object-src 'self'",
   "description": "Turtles Dashboard",
     "content_scripts": [
     {
