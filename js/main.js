@@ -127,13 +127,15 @@ $(document).ready(function($) {
 	// ToDoToggle Functionality
 	// *****************************************************************/
 	$(document).on('click', '.delete', function(event) {
+		var uid= firebase.auth().currentUser.uid;
+
 		let content = $(this).parent().text().split("-");
 		let key = content[0].replace(/((\s*\S+)*)\s*/, "$1");
 		$(this).parent().fadeOut(300, function() {
 
 			// ***************************To Do List FIREBASE 
 
-			var ref = firebase.database().ref('/todos');
+			var ref = firebase.database().ref('/todos/'+ uid);
 			var query = ref.orderByChild('todo').equalTo(key);
 			// console.log(query);
 			query.on('value', function(snapshot) {
