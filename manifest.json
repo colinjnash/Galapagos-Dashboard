@@ -9,7 +9,7 @@
     {
       "matches": ["<all_urls>"],
       "css": ["/css/style.css"],
-      "js": ["js/firebase.js","/js/main.js","/js/skycons.js", "js/jquery-3.2.1.js"]
+      "js": ["./js/firebase.js","./js/main.js","./js/skycons.js", "/js/jquery-3.2.1.js"]
     }
   ],
     "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1W9RPp3aKb5r6vfMwO4y9bME4JCtSwr7UleEOVcrf+sPB20V+afwJueZgb+48hIu9C2TUVdc1hVq7yKudFl3t6mDN2QgY+vpPJ1+hz03J0vz00dabm4otCFZGilJMqkIUww94q/tYrpShIyw7jqyrOwWAYYO15u8MsLlwYRMJ66VtCpmo3uG/fZaThO5VRbl6zHcuUIdDhRTB706yI30JbsY6wTDTsa72EuyIyLoMziUuNxY8w9JI+Wlyl09ZQ+lfU403ICT+Fvp9m+gXcuTXMW+N0YpWsV7uQeXv9if8Utrcs5ioYULJGsYFcvQ2qZAlKgUBsg4oPu+kzeNgJLY1wIDAQAB",
