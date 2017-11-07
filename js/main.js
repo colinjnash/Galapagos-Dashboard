@@ -84,6 +84,8 @@ $(document).ready(function($) {
 		const buttons = document.getElementsByClassName('calculator');
 		let screen = '';
 		let total = 0;
+		let firstArr = [];
+		let eqArr = [];
 
 		for ( let i = 0; i < buttons.length; i ++ ) {
 			buttons[i].onclick = function() {
@@ -102,8 +104,17 @@ $(document).ready(function($) {
 					case "bs":
 						backSpace();
 						break;
+					case "+":
+						firstArr = firstArr.join('');
+						eqArr.push(firstArr);
+						firstArr = [];
+						total += Number(eqArr[0]);
+						setText(total);
+						break;
 					default:
+						firstArr.push(this.value);
 						screen = screen.concat(this.value);
+
 						setText(screen);
 						break;
 				}
