@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Turtles 3 Project</title>
+		<title>Galapagos Dashboard</title>
 		<meta name="description" content="The HTML5 Herald">
 		<meta name="author" content="SitePoint">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -33,7 +33,9 @@
 		<div class="container-fluid">
 			<div class="row text-center">
 				<div class="col-sm-offset-2 col-sm-8 mainBody hidden" id="welcome">
-					<h1 id="welcomeName"></h1>
+					<div id="nameSpace">
+					<h1 id="welcomeName">  </h1>
+					</div>
 					<h1 id="clock">The Clock is Broken!?</h1>
       				<div class="todo-form form-group">
       				  <h2>What do you want to get done today?</h2>
@@ -41,10 +43,10 @@
       				    <div> 
       				      <input type="text" id="todo" placeholder="Task"/>
       				    </div>
-      				    <div>
+      				    <div id="userDiv">
       				      <input type="text" id="user" placeholder="Assign user"/>
       				    </div>
-      				    <button type="submit">Add Task</button>
+      				    <button class="btn btn-primary" type="submit">Add Task</button>
       				  </form>  
       				</div>
 				</div>
@@ -62,6 +64,7 @@
 
 		<div class= "row bottom">
 			<div id="weather"><span id="wxtemp"></span><canvas id="wxIcons" width="64" height="64"></canvas>
+				<h4 id="cityList"></h4>
 		</div>
 </div>
 </div>

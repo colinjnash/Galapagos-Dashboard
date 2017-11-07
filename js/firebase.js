@@ -17,17 +17,17 @@ function initApp() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-		// User is signed in.
-			var ref = firebase.database().ref("todos/" + firebase.auth().currentUser.uid);
-			var displayName = user.displayName;
-			var email = user.email;
-			var emailVerified = user.emailVerified;
-			var photoURL = user.photoURL;
-			var isAnonymous = user.isAnonymous;
-			var uid = user.uid;
-			var providerData = user.providerData;
+			// User is signed in.
+			firebase.database().ref("users/" + firebase.auth().currentUser.uid).set({
+				Name :user.displayName,
+				email : user.email,
+				emailVerified: user.emailVerified,
+				photoURL:  user.photoURL,
+				isAnonymous : user.isAnonymous,
+				uid : user.uid,
+				
+			});
 			// [END_EXCLUDE]
-			console.log(providerData);
 			form.addEventListener("submit", postTodo);
 
 			const timeStamp = () => {
@@ -49,7 +49,8 @@ function initApp() {
 
 				// if user and todo exist will push all the data to the reference of the database '/todos' as assigned from above
 				if (todo && user) {
-					ref.push({
+					let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
+					todoref.push({
 						todo: todo,
 						user: user,
 						time: timeStamp()
@@ -61,7 +62,8 @@ function initApp() {
 			}
 
 			// This is a firebase command to grab the data then call addTodo to do something with all data in the database
-			ref.on("child_added", function(snapshot) {
+			let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
+			todoref.on("child_added", function(snapshot) {
 				let todo = snapshot.val(); // firebase returns a snapshot of the database and assigns that to todo value
 				addTodo(todo.todo, todo.user, todo.time);
 			});
@@ -70,7 +72,7 @@ function initApp() {
 			const addTodo = (todo, user, timeStamp) => {
 				let todos = document.getElementById("todos");
 				todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
-			};	
+			};
 		}
 	});
 
