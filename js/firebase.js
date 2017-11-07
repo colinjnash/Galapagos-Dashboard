@@ -16,7 +16,7 @@ const form = document.querySelector("form");
 function initApp() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
-		if (user) {
+		if (firebase.database().ref("users/" + firebase.auth().currentUser.uid) == null) {
 			// User is signed in.
 			firebase.database().ref("users/" + firebase.auth().currentUser.uid).set({
 				Name :user.displayName,
@@ -26,7 +26,8 @@ function initApp() {
 				isAnonymous : user.isAnonymous,
 				uid : user.uid,
 				
-			});
+			}); }
+		else {
 			// [END_EXCLUDE]
 			form.addEventListener("submit", postTodo);
 
@@ -74,6 +75,7 @@ function initApp() {
 				todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
 			};
 		}
+
 	});
 
 

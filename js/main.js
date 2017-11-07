@@ -15,10 +15,10 @@
  *********************************************/
 // Fade in the div
 $(document).ready(function($) {
-  // Chrome Authentication Token
-  chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	// Chrome Authentication Token
+	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
-  // Use the token.
+	// Use the token.
 		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
 		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
 		firebase.auth().signInWithCredential(provider).then(function(result){
@@ -72,7 +72,7 @@ $(document).ready(function($) {
 				} else {
 					panel.style.display = 'block';
 				}
-			}
+			};
 		}
 	}
 
@@ -88,26 +88,26 @@ $(document).ready(function($) {
 		for ( let i = 0; i < buttons.length; i ++ ) {
 			buttons[i].onclick = function() {
 				switch(this.value) {
-					case "c":
-						screen = '';
-						total = 0;
-						setText('');						
-						break;
-					case "=":
-						evaluate();
-						break;
-					case ".":
-						addPoint();
-						break;
-					case "bs":
-						backSpace();
-						break;
-					default:
-						screen = screen.concat(this.value);
-						setText(screen);
-						break;
+				case "c":
+					screen = '';
+					total = 0;
+					setText('');						
+					break;
+				case "=":
+					evaluate();
+					break;
+				case ".":
+					addPoint();
+					break;
+				case "bs":
+					backSpace();
+					break;
+				default:
+					screen = screen.concat(this.value);
+					setText(screen);
+					break;
 				}
-			}
+			};
 		}
 
 		function setText(n) {
@@ -201,7 +201,7 @@ $(document).ready(function($) {
 
 			// ***************************To Do List FIREBASE 
 
-			var ref = firebase.database().ref('/users/'+ uid + "");
+			var ref = firebase.database().ref('/users/'+ uid + "/todos");
 			var query = ref.orderByChild('todo').equalTo(key);
 			// console.log(query);
 			query.on('value', function(snapshot) {
