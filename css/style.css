@@ -3,6 +3,11 @@
     0. Action Classes
     1. Navigation
     2. Main Area
+=======
+    0. Action Classes
+    1. Navigation
+        a. Calculator
+    2. Main Area
     3. To Do List
 
 
@@ -131,6 +136,75 @@ h1 {
     color: #ccc;
     background: transparent;
 }
+
+/*=======*/
+button.accordion {
+    border: none;
+    background: transparent;
+}
+
+button.accordion.active,
+button.accordion:hover {
+    font-color: #333;
+}
+
+div.panel {
+    background: transparent;
+    padding: 0 2%;  
+    display: none;  
+}
+
+div.panel > p,
+div.panel > ul > li {
+    color: #fff;
+}
+
+
+
+/* a. Calculator
+**************************/
+#outerBody {
+    background: #5b5b5b;
+    height: 300px;
+    width: 210px;
+    border-radius: 2%;
+    margin-left: 3%;
+}
+
+#window {
+    background: #fff;
+    height: 90px;
+    width: 180px;
+    top: 10px;
+    left: 15px;
+    position: relative;
+    border-radius: 2%;
+}
+
+#numKey {
+    position: relative;
+    top: 12px;
+    right: 15px;
+    margin-left: 20%;
+}
+
+#numKey > div > div {
+    padding: 0;
+
+}
+
+#numKey > div > div > button {
+    color: #333;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+}
+
+#numKey > .row {
+    margin: 7px 0 0 0;
+}
+
+
 
 
 /** 2.Main Area
