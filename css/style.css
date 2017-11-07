@@ -1,5 +1,6 @@
 /*****
 ==========TABLE OF CONTENTS==========
+
     0. Action Classes
     1. Navigation
     2. Main Area
@@ -8,7 +9,12 @@
     1. Navigation
         a. Calculator
     2. Main Area
-    3. To Do List
+=======
+	0. Action Classes
+	1. Navigation
+        a. Calculator
+	2. Main Area
+  3. To Do List
 
 
 /*****************TEST CASES*************************/
@@ -99,6 +105,7 @@ h1 {
 }
 
 .leftNav a,
+.leftNav button,
 .rightNav li {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
@@ -137,7 +144,7 @@ h1 {
     background: transparent;
 }
 
-/*=======*/
+/* ====================== */
 button.accordion {
     border: none;
     background: transparent;
@@ -203,9 +210,6 @@ div.panel > ul > li {
 #numKey > .row {
     margin: 7px 0 0 0;
 }
-
-
-
 
 /** 2.Main Area
 ********************************************************/

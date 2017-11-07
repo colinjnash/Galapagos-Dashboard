@@ -3,66 +3,133 @@
 		1. Onload Script:
 			-Change Background
 			-Clock
-		2. Nav Menu Scripts
-		3. Clock
-		4. To Do List
+		2. Random Background Image Script	
+		3. Nav Menu Scripts
+		4. Clock
+		5. To Do List
 ***************************************************************/
 
 // Optional JQUERY load
 
 /* Onload Scripts
  *********************************************/
+// Fade in the div
 $(document).ready(function($) {
-
-	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
-	// Use the token.
-
+  // Chrome Authentication Token
+  chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	
+  // Use the token.
 		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
 		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
 		firebase.auth().signInWithCredential(provider).then(function(result){
 			var username = result.displayName;
-			$('#welcomeName').html(`Hello ${username}`);
-	
+			$('#welcomeName').html(`Hello ${username}`);	
 		});
-
-
 	});
-
 
 	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {
 		$('#welcome').removeClass('hidden');
 	});
 
-
+	// Execute Scripts Here!
 	changeBackground();
 	buildClock();
+	accordion_menu();
+	calculator();
 
-
-
-
+	/* Random Background Image Script
+	 *********************************************/
 	function changeBackground() {
-		var arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
+		let arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
 		$('body').css("background-image", "url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
 	}
-
-	// Fade in the div
-
-
-
-
-
-
+	
 
 	/* Nav Menu
 	 *********************************************/
-	// Two functions to open and close side menu
+	// OPEN and CLOSE left navMenu	
 	document.getElementById('openMenu').onclick = function() {
 		document.getElementById('leftNav').style.width = '250px';
 	};
+
+
 	document.getElementById('closeMenu').onclick = function() {
 		document.getElementById('leftNav').style.width = '0';
 	};
+
+
+	// Accordion Menus Open and Close
+	function accordion_menu() {
+		const accItems = document.getElementsByClassName('accordion');
+
+		for ( let i = 0; i < accItems.length; i++ ) {
+			accItems[i].onclick = function() {
+				const panel = this.nextElementSibling;
+
+				if ( panel.style.display === 'block' ) {
+					panel.style.display = 'none';
+				} else {
+					panel.style.display = 'block';
+				}
+			}
+		}
+	}
+
+	/* Calculator 
+	 *********************************************/
+	function calculator() {				
+		const window_panel = document.getElementById('window_panel');
+		const sub_window_panel = document.getElementById('sub_window_panel');
+		const buttons = document.getElementsByClassName('calculator');
+		let screen = '';
+		let total = 0;
+
+		for ( let i = 0; i < buttons.length; i ++ ) {
+			buttons[i].onclick = function() {
+				switch(this.value) {
+					case "c":
+						screen = '';
+						total = 0;
+						setText('');						
+						break;
+					case "=":
+						evaluate();
+						break;
+					case ".":
+						addPoint();
+						break;
+					case "bs":
+						backSpace();
+						break;
+					default:
+						screen = screen.concat(this.value);
+						setText(screen);
+						break;
+				}
+			}
+		}
+
+		function setText(n) {
+			window_panel.innerHTML = n;
+		}
+
+		function evaluate() {
+			total = eval(screen);
+			screen = String(total);
+			setText(screen);
+		}
+
+		function addPoint() {
+			if ( screen.indexOf('.' === -1) ) {
+				screen = screen.concat('.');
+				setText(screen);
+			}
+		}
+
+	}
+
+
 
 	/* Clock
 	 *********************************************/
@@ -97,7 +164,6 @@ $(document).ready(function($) {
 		}
 		return i;
 	}
-
 
 
 	//*********************************************/
