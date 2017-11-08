@@ -116,33 +116,117 @@ $(document).ready(function($) {
 						eh = '+';
 
 					// Combine the first array to create number
-						stageArr = stageArr.join('');
-						console.log(stageArr);
+						stageArr = stageArr.join('');						
 
-					// Push that variable into a new array
-						eqArr.push(stageArr);	
-						subArr.push(stageArr + '+');
+					// Push variable into a new array
+						eqArr.push(stageArr);						
 
 					// Clear stageArr for next number
 						stageArr = [];
-
-					// Add to the sub screen for display
-						setSubText(subArr.join(''));						
 
 					// Take final number and add it to total variable						
 						total += Number(eqArr[counter]);		
 
 					// Set the total value to the screen of the calc			
 						setMainText(total);
+					
+					// Add to the sub screen for display						
 						screen += '+';
 						setSubText(screen);
-
-					// Clear screen for next number typed in
-						//screen = '';
 
 					// Add one to counter
 						counter++;						
 						break;
+
+					case "-":
+					// Equation History								
+						eh = '-';
+
+					// Combine the first array to create number
+						stageArr = stageArr.join('');						
+
+					// Push that variable into a new array
+						eqArr.push(stageArr);							
+
+					// Clear stageArr for next number
+						stageArr = [];
+														
+					// Take final number and add it to total variable						
+						total -= Number(eqArr[counter]);		
+
+					// Set the total value to the screen of the calc			
+						setMainText(total);
+
+					// Add to the sub screen for display	
+						screen += '-';
+						setSubText(screen);					
+
+					// Add one to counter
+						counter++;						
+						break;
+					
+					case "*":
+					// Equation History								
+						eh = '*';
+
+					// Combine the first array to create number
+						stageArr = stageArr.join('');						
+
+					// Push that variable into a new array
+						eqArr.push(stageArr);							
+
+					// Clear stageArr for next number
+						stageArr = [];
+														
+					// Take final number and add it to total variable
+						if ( total == 0 ) {
+							total = 1;
+						}
+						total *= Number(eqArr[counter]);		
+
+					// Set the total value to the screen of the calc			
+						setMainText(total);
+
+					// Add to the sub screen for display	
+						screen += '*';
+						setSubText(screen);					
+
+					// Add one to counter
+						counter++;						
+						break;											
+					case "/":
+					// Equation History								
+						eh = '/';
+
+					// Combine the first array to create number
+						stageArr = stageArr.join('');						
+
+					// Push that variable into a new array
+						eqArr.push(stageArr);							
+
+					// Clear stageArr for next number
+						stageArr = [];
+														
+					// Take final number and add it to total variable
+						if ( eqArr.length === 1 ) {
+							total = eqArr[0];
+						}
+
+						if ( eqArr.length >=2 ) {
+							total /= Number(eqArr[counter]);		
+						}
+
+					// Set the total value to the screen of the calc			
+						setMainText(total);
+
+					// Add to the sub screen for display	
+						screen += '/';
+						setSubText(screen);					
+
+					// Add one to counter
+						counter++;						
+						break;
+
 
 					default:
 						stageArr.push(this.value);
@@ -173,12 +257,35 @@ $(document).ready(function($) {
 					total += Number(eqArr[eqArr.length - 1]);
 					setMainText(total);
 					break;
-				// case "-":
-				// 	break;
-				// case "*":
-				// 	break;
-				// case "/":
-				// 	break;
+				case "-":
+				// Combine the first array to create number
+					stageArr = stageArr.join('');					
+				// Push that variable into a new array
+					eqArr.push(stageArr);										
+					stageArr = [];
+					total -= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);				
+					break;
+				case "*":
+				// Combine the first array to create number
+					stageArr = stageArr.join('');					
+				// Push that variable into a new array
+					eqArr.push(stageArr);										
+					stageArr = [];
+					total *= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);				
+					break;
+
+					break;
+				case "/":
+				// Combine the first array to create number
+					stageArr = stageArr.join('');					
+				// Push that variable into a new array
+					eqArr.push(stageArr);										
+					stageArr = [];
+					total /= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					break;
 				default:
 					break;
 			}
