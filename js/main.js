@@ -86,12 +86,52 @@ $(document).ready(function($) {
 		const sub_window_panel = document.getElementById('sub_window_panel');
 		const buttons = document.getElementsByClassName('calculator');
 		let screen = '';
+		let eh = '';		
 		let total = 0;
+		let counter = 0;
+		let stageArr = [];
+		let eqArr = [];
+		
 
 		for ( let i = 0; i < buttons.length; i ++ ) {
 			buttons[i].onclick = function() {
 				switch(this.value) {
-				case "c":
+					case "c":
+						clear();						
+						break;
+					case "=":
+						evaluate(eh);
+						break;
+					case ".":
+						addPoint();
+						break;
+					case "bs":
+						backSpace();
+						break;
+					case "+":						
+						addition();												
+						break;
+					case "-":
+						subtraction();						
+						break;					
+					case "*":
+						multiplication();						
+						break;											
+					case "/":
+						division();					
+						break;
+					case "%":
+						modulus();					
+						break;						
+					default:
+						stageArr.push(this.value);
+						console.log('stgArr after keystroke: ' + stageArr);
+						screen = screen.concat(this.value);
+						setMainText(screen);
+						setSubText(screen);
+						break;
+			
+          case "c":
 					screen = '';
 					total = 0;
 					setText('');						
@@ -109,27 +149,184 @@ $(document).ready(function($) {
 					screen = screen.concat(this.value);
 					setText(screen);
 					break;
+
 				}
 			};
 		}
 
-		function setText(n) {
+		function setMainText(n) {
 			window_panel.innerHTML = n;
 		}
 
-		function evaluate() {
-			total = eval(screen);
-			screen = String(total);
-			setText(screen);
+		function setSubText(n) {
+			sub_window_panel.innerHTML = n;
+		}
+
+		function createNumber() {
+		// Combine the first array to create number
+			stageArr = stageArr.join('');	
+			console.log(stageArr);
+		// Push variable into a new array
+			eqArr.push(stageArr);
+			console.log(eqArr);
+		// Clear stageArr for next number
+			stageArr = [];
 		}
 
 		function addPoint() {
-			if ( screen.indexOf('.' === -1) ) {
-				screen = screen.concat('.');
-				setText(screen);
+			if ( !stageArr.includes('.') ) {
+				screen += '.';
+				stageArr.push('.');
+				setMainText(screen);
+				setSubText(screen);
 			}
+		}	
+
+		function backSpace() {
+			let spaces = stageArr.length * -1;
+			screen = screen.slice(0, spaces);
+			setMainText(screen);
+			setSubText(screen);
+			stageArr = [];
 		}
 
+		function clear() {
+			screen = '';
+			eh = '';		
+			total = 0;
+			counter = 0;
+			stageArr = [];
+			eqArr = [];
+			setMainText('');
+			setSubText('');			
+		}	
+
+		function addition() {
+		// Equation History	and create number to store in eqArr							
+			eh = '+';
+			createNumber();
+		// Take final number and add it to total variable						
+			total += Number(eqArr[counter]);		
+		// Set the total value to the screen of the calc			
+			setMainText(total);
+		// Add to the sub screen for display						
+			screen += '+';
+			setSubText(screen);
+		// Add one to counter
+			counter++;			
+		}
+		
+		function subtraction() {
+		// Equation History	and create number to store in eqArr							
+			eh = '-';
+			createNumber();
+		// Check to see if there is more than one value in eqArr 
+			if ( eqArr.length === 1 ) {
+				total = eqArr[0];
+			} else {
+				total -= Number(eqArr[counter]);
+			}									
+		// Set the total value to the screen of the calc			
+			setMainText(total);
+		// Add to the sub screen for display	
+			screen += '-';
+			setSubText(screen);					
+		// Add one to counter
+			counter++;			
+		}		
+
+		function multiplication() {
+		// Equation History	and create number to store in eqArr								
+			eh = '*';
+			createNumber();											
+		// If total starts at 0 make it 1 for multiplication to work
+			if ( total === 0 ) {
+				total = 1;
+			}
+			total *= Number(eqArr[counter]);		
+		// Set the total value to the screen of the calc			
+			setMainText(total);
+		// Add to the sub screen for display	
+			screen += '*';
+			setSubText(screen);					
+		// Add one to counter
+			counter++;			
+		}
+
+		function division() {
+		// Equation History	and create number to store in eqArr							
+			eh = '/';
+			createNumber();										
+		// Check length to determine init total
+			if ( eqArr.length === 1 ) {
+				total = eqArr[0];
+			} else if ( eqArr.length >= 2 ) {
+				total /= Number(eqArr[counter]);		
+			}
+		// Set the total value to the screen of the calc			
+			setMainText(total);
+		// Add to the sub screen for display	
+			screen += '/';
+			setSubText(screen);					
+		// Add one to counter
+			counter++;				
+		}		
+
+		function modulus() {
+		// Equation History	and create number to store in eqArr							
+			eh = '%';
+			createNumber();										
+		// Check length to determine init total
+			if ( eqArr.length === 1 ) {
+				total = eqArr[0];
+			} else if ( eqArr.length >= 2 ) {
+				total %= Number(eqArr[counter]);		
+			}
+		// Set the total value to the screen of the calc			
+			setMainText(total);
+		// Add to the sub screen for display	
+			screen += '%';
+			setSubText(screen);					
+		// Add one to counter
+			counter++;				
+		}
+
+		function evaluate(history) {
+			switch(history) {
+				case "+":
+					createNumber();
+					total += Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					setSubText(screen + '=' + total);
+					break;
+				case "-":
+					createNumber();
+					total -= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					setSubText(screen + '=' + total);				
+					break;
+				case "*":
+					createNumber();
+					total *= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					setSubText(screen + '=' + total);				
+					break;
+				case "/":
+					createNumber();
+					total /= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					setSubText(screen + '=' + total);
+					break;
+				case "%":
+					createNumber();
+					total %= Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					setSubText(screen + '=' + total);
+					break;					
+				default:
+					break;
+			}
+		}
 	}
 
 
