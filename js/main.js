@@ -82,10 +82,11 @@ $(document).ready(function($) {
 		const window_panel = document.getElementById('window_panel');
 		const sub_window_panel = document.getElementById('sub_window_panel');
 		const buttons = document.getElementsByClassName('calculator');
-		let screen = '';
+		let screen = '';		
 		let total = 0;
 		let firstArr = [];
 		let eqArr = [];
+		let counter = 0;
 
 		for ( let i = 0; i < buttons.length; i ++ ) {
 			buttons[i].onclick = function() {
@@ -93,7 +94,10 @@ $(document).ready(function($) {
 					case "c":
 						screen = '';
 						total = 0;
-						setText('');						
+						eqArr = [];
+						counter = 0;
+						setMainText('');
+						setSubText('');						
 						break;
 					case "=":
 						evaluate();
@@ -104,25 +108,43 @@ $(document).ready(function($) {
 					case "bs":
 						backSpace();
 						break;
-					case "+":
+					case "+":								
+					// Combine the first array to create number
 						firstArr = firstArr.join('');
-						eqArr.push(firstArr);
+						console.log(firstArr);
+					// Push that variable into a new array
+						eqArr.push(firstArr);			
+						
+					// Clear firstArr for next number
 						firstArr = [];
-						total += Number(eqArr[0]);
-						setText(total);
+					// Add to the sub screen for display
+						setSubText(eqArr.join(''));						
+					// Take final number and add it to total variable
+						console.log('Total Before: ' + total);					
+						total += Number(eqArr[counter]);
+						console.log('Total After: ' + total);		
+					// Set the total value to the screen of the calc			
+						setMainText(total);
+					// Clear screen for next number typed in
+						screen = '';
+					// Add one to counter
+						counter++;						
 						break;
 					default:
 						firstArr.push(this.value);
 						screen = screen.concat(this.value);
-
-						setText(screen);
+						setMainText(screen);
 						break;
 				}
 			}
 		}
 
-		function setText(n) {
+		function setMainText(n) {
 			window_panel.innerHTML = n;
+		}
+
+		function setSubText(n) {
+			sub_window_panel.innerHTML = n;
 		}
 
 		function evaluate() {
