@@ -82,10 +82,12 @@ $(document).ready(function($) {
 		const window_panel = document.getElementById('window_panel');
 		const sub_window_panel = document.getElementById('sub_window_panel');
 		const buttons = document.getElementsByClassName('calculator');
-		let screen = '';		
+		let screen = '';
+		let eh = '';		
 		let total = 0;
-		let firstArr = [];
+		let stageArr = [];
 		let eqArr = [];
+		let subArr = [];
 		let counter = 0;
 
 		for ( let i = 0; i < buttons.length; i ++ ) {
@@ -95,12 +97,13 @@ $(document).ready(function($) {
 						screen = '';
 						total = 0;
 						eqArr = [];
+						subArr = [];
 						counter = 0;
 						setMainText('');
 						setSubText('');						
 						break;
 					case "=":
-						evaluate();
+						evaluate(eh);
 						break;
 					case ".":
 						addPoint();
@@ -108,32 +111,44 @@ $(document).ready(function($) {
 					case "bs":
 						backSpace();
 						break;
-					case "+":								
+					case "+":
+					// Equation History								
+						eh = '+';
+
 					// Combine the first array to create number
-						firstArr = firstArr.join('');
-						console.log(firstArr);
+						stageArr = stageArr.join('');
+						console.log(stageArr);
+
 					// Push that variable into a new array
-						eqArr.push(firstArr);			
-						
-					// Clear firstArr for next number
-						firstArr = [];
+						eqArr.push(stageArr);	
+						subArr.push(stageArr + '+');
+
+					// Clear stageArr for next number
+						stageArr = [];
+
 					// Add to the sub screen for display
-						setSubText(eqArr.join(''));						
-					// Take final number and add it to total variable
-						console.log('Total Before: ' + total);					
-						total += Number(eqArr[counter]);
-						console.log('Total After: ' + total);		
+						setSubText(subArr.join(''));						
+
+					// Take final number and add it to total variable						
+						total += Number(eqArr[counter]);		
+
 					// Set the total value to the screen of the calc			
 						setMainText(total);
+						screen += '+';
+						setSubText(screen);
+
 					// Clear screen for next number typed in
-						screen = '';
+						//screen = '';
+
 					// Add one to counter
 						counter++;						
 						break;
+
 					default:
-						firstArr.push(this.value);
+						stageArr.push(this.value);
 						screen = screen.concat(this.value);
 						setMainText(screen);
+						setSubText(screen);
 						break;
 				}
 			}
@@ -147,10 +162,26 @@ $(document).ready(function($) {
 			sub_window_panel.innerHTML = n;
 		}
 
-		function evaluate() {
-			total = eval(screen);
-			screen = String(total);
-			setText(screen);
+		function evaluate(history) {
+			switch(history) {
+				case "+":
+				// Combine the first array to create number
+					stageArr = stageArr.join('');					
+				// Push that variable into a new array
+					eqArr.push(stageArr);										
+					stageArr = [];
+					total += Number(eqArr[eqArr.length - 1]);
+					setMainText(total);
+					break;
+				// case "-":
+				// 	break;
+				// case "*":
+				// 	break;
+				// case "/":
+				// 	break;
+				default:
+					break;
+			}
 		}
 
 		function addPoint() {
