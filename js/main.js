@@ -115,14 +115,7 @@ $(document).ready(function($) {
 					// Equation History								
 						eh = '+';
 
-					// Combine the first array to create number
-						stageArr = stageArr.join('');						
-
-					// Push variable into a new array
-						eqArr.push(stageArr);						
-
-					// Clear stageArr for next number
-						stageArr = [];
+						createNumber();
 
 					// Take final number and add it to total variable						
 						total += Number(eqArr[counter]);		
@@ -142,14 +135,7 @@ $(document).ready(function($) {
 					// Equation History								
 						eh = '-';
 
-					// Combine the first array to create number
-						stageArr = stageArr.join('');						
-
-					// Push that variable into a new array
-						eqArr.push(stageArr);							
-
-					// Clear stageArr for next number
-						stageArr = [];
+						createNumber();
 														
 					// Take final number and add it to total variable						
 						total -= Number(eqArr[counter]);		
@@ -169,14 +155,7 @@ $(document).ready(function($) {
 					// Equation History								
 						eh = '*';
 
-					// Combine the first array to create number
-						stageArr = stageArr.join('');						
-
-					// Push that variable into a new array
-						eqArr.push(stageArr);							
-
-					// Clear stageArr for next number
-						stageArr = [];
+						createNumber();
 														
 					// Take final number and add it to total variable
 						if ( total == 0 ) {
@@ -198,14 +177,7 @@ $(document).ready(function($) {
 					// Equation History								
 						eh = '/';
 
-					// Combine the first array to create number
-						stageArr = stageArr.join('');						
-
-					// Push that variable into a new array
-						eqArr.push(stageArr);							
-
-					// Clear stageArr for next number
-						stageArr = [];
+						createNumber();
 														
 					// Take final number and add it to total variable
 						if ( eqArr.length === 1 ) {
@@ -289,6 +261,15 @@ $(document).ready(function($) {
 				default:
 					break;
 			}
+		}
+
+		function createNumber() {
+		// Combine the first array to create number
+			stageArr = stageArr.join('');						
+		// Push variable into a new array
+			eqArr.push(stageArr);						
+		// Clear stageArr for next number
+			stageArr = [];
 		}
 
 		function addPoint() {
