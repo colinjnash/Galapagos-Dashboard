@@ -1,26 +1,39 @@
 /*****
 ==========TABLE OF CONTENTS==========
+
+    0. Action Classes
+    1. Navigation
+    2. Main Area
+=======
+    0. Action Classes
+    1. Navigation
+        a. Calculator
+    2. Main Area
+=======
 	0. Action Classes
 	1. Navigation
         a. Calculator
 	2. Main Area
-    3. To Do List
+  3. To Do List
 
 
 /*****************TEST CASES*************************/
 
+
 /*div {
 
-	border: 2px solid red;
+    border: 2px solid red;
 }
 
 */
+
+
 /** 0. Action Classes
 ********************************************************/
+
 html {
-width: 100%;
-height: 100%;
-color: white;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -28,13 +41,18 @@ body {
     background-repeat: no-repeat;
 }
 
+h4 {
+    text-align: right;
+}
+
 h2 {
     color: white;
-    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
 }
+
 h1 {
     text-align: center;
 }
+
 #welcome.hidden {
     display: 0;
 }
@@ -43,12 +61,17 @@ h1 {
     display: inherit;
     transition: all .7s;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 .header {
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+
 }
+
 
 /*********************************************************/
 
@@ -68,7 +91,6 @@ h1 {
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
-
 }
 
 .leftNav {
@@ -122,6 +144,7 @@ h1 {
     background: transparent;
 }
 
+/* ====================== */
 button.accordion {
     border: none;
     background: transparent;
@@ -188,31 +211,13 @@ div.panel > ul > li {
     margin: 7px 0 0 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /** 2.Main Area
 ********************************************************/
 
 .mainBody {
-    margin-top: 5%;
-}
-
-.mainBody h1 {
     color: #fff;
-    font-size: 58px;
+    font-size: 1em;
+    margin-top: 5%;
 }
 
 .mainBody label {
@@ -221,35 +226,59 @@ div.panel > ul > li {
 
 .inputStyle h2 {
     color: #fff;
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
- input[type="text"] {
+#welcome input[type="text"] {
     background: transparent;
     border: none;
     border-bottom: 2px solid #fff;
-    width: 80%;
+    width: 70%;
     color: #fff;
-       margin: 5% auto;
+    margin: 5% auto;
     outline: none;
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: center;
+    margin: 2%;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
 }
+
+#welcome input::placeholder {
+    color: white;
+    font-size: 1.2em;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+
+
 
 
 /** 3. To Do List
 ********************************************************/
+
 .hidden {
     opacity: 0;
     transition: all .5s;
 }
 
 #toDoTitle {
-     margin: 5 px;
+    margin: 5 px;
     padding: 5 px;
     font-size: 1.5em;
     font-weight: 800;
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 #toggleList {
@@ -274,34 +303,34 @@ div.panel > ul > li {
 
 input[type="checkbox"] {
     margin-right: 10px;
-    
 }
 
 #toggleList span {
     float: right;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
     width: 0;
     opacity: 0;
     transition: 0.2s linear;
     color: white;
-
 }
 
 #toggleList li:hover span {
     width: 30px;
     opacity: 1;
-     background-color: rgba(225, 0, 0, .5);
-     text-align: center;
+    background-color: rgba(225, 0, 0, .5);
+    text-align: center;
     border-radius: 30px;
     display: inline;
-     
 }
 
 #listItem {
     background: none;
 }
 
-div.row.bottom  {
+div.row.bottom {
     font-size: 1em;
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
@@ -311,9 +340,9 @@ div.row.bottom  {
 }
 
 #weather {
-    position: relative;
-    bottom: 0;
-   right: 2%;
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
     font-size: 24px;
     float: right;
     height: auto;
@@ -323,8 +352,15 @@ div.row.bottom  {
     margin-left: 20px;
 }
 
-#todos > li.todoli.completed {
-         background-color: rgba(0, 0, 0, .1);
-
+#todos>li.todoli.completed {
+    background-color: rgba(0, 0, 0, .1);
     text-decoration: line-through;
+}
+
+#cityList {
+    text-align: center;
+}
+
+#nameSpace {
+    min-height: 65px;
 }
