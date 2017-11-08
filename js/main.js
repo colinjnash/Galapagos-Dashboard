@@ -22,8 +22,11 @@ $(document).ready(function($) {
 		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
 		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
 		firebase.auth().signInWithCredential(provider).then(function(result){
-			var username = result.displayName;
-			$('#welcomeName').html(`Hello ${username}`);	
+			var userId = firebase.auth().currentUser.uid;
+			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+				var username = snapshot.val().Name;
+				$('#welcomeName').html(`Hello ${username}`);	
+			});
 		});
 	});
 
