@@ -14,8 +14,8 @@
 		<![endif]-->
 	</head>
 
-	<body>
-		<header>
+<body>
+	<div class="container galapagos">
 			<div id="leftNav" class="leftNav">
 				<a href="javascript:void(0)" id="closeMenu" class="closebtn"">&times;</a>
 				<button class="accordion">About</button>
@@ -82,8 +82,6 @@
 			<div class="openMenu">				
 				<i id="openMenu" class="fa fa-list" aria-hidden="true"></i>
 			</div>
-		<header>
-
 		<div class="container-fluid">
 			<div class="row text-center">
 				<div class="col-sm-offset-2 col-sm-8 mainBody hidden" id="welcome">
@@ -120,15 +118,18 @@
 			<div id="weather"><span id="wxtemp"></span><canvas id="wxIcons" width="64" height="64"></canvas>
 				<h4 id="cityList"></h4>
 		</div>
+		</div>
 </div>
-</div>
+
 		<!-- Below are Script Tags for JQuery & Main JS, as well as FA -->
 		<script src="js/jquery-3.2.1.js"></script>
 	  	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 	  	
 	  	<script src='js/firebase.js'></script>
 		<script src='js/main.js'></script>
+		<script src='js/wxPop.js'></script>
 		<script src='js/skycons.js'></script>
+		<script src='js/calculator.js'></script>
 		<script src="https://use.fontawesome.com/3cc79e2fae.js"></script>
 	</body>
 	

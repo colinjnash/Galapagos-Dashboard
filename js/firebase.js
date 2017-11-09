@@ -30,21 +30,22 @@ function initApp() {
 			});
 		}
 		else {
+			console.log("User data is present");
 			// [END_EXCLUDE]
 
-//========================= MESSAGING TEMPLATE (REALLY EXPERIMENTAL) ===================== 
+			//========================= MESSAGING TEMPLATE (REALLY EXPERIMENTAL) ===================== 
 
-			messaging.requestPermission()
-				.then(function() {
-					console.log('Notification permission granted.');
-				// TODO(developer): Retrieve an Instance ID token for use with FCM.
-				// ...
-				})
-				.catch(function(err) {
-					console.log('Unable to get permission to notify.', err);
-				});
+			// messaging.requestPermission()
+			// 	.then(function() {
+			// 		console.log('Notification permission granted.');
+			// 	// TODO(developer): Retrieve an Instance ID token for use with FCM.
+			// 	// ...
+			// 	})
+			// 	.catch(function(err) {
+			// 		console.log('Unable to get permission to notify.', err);
+			// 	});
 
-//END OF MESSAGING TEMPLATE
+			//END OF MESSAGING TEMPLATE
 
 			form.addEventListener("submit", postTodo);
 
@@ -60,7 +61,7 @@ function initApp() {
 				return now;
 			};
 			// Add todo to firebase database
-			function postTodo(e) {
+			var postTodo = function postTodo(e) {
 				e.preventDefault();
 				let todo = document.getElementById("todo").value; // gets the todo field assigns to todo
 				let user = document.getElementById("user").value; // gets user field and assigns to user
@@ -77,7 +78,7 @@ function initApp() {
 
 				document.getElementById("todo").value = ''; // clear todo and user field
 				document.getElementById("user").value = '';
-			}
+			};
 
 			// This is a firebase command to grab the data then call addTodo to do something with all data in the database
 			let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
@@ -99,5 +100,3 @@ function initApp() {
 
 
 }
-
-initApp();
