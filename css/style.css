@@ -218,6 +218,18 @@ div.panel > ul > li {
     margin: 7px 0 0 0;
 }
 
+
+/* 1.A Github History 
+*****************************************/
+
+#gitHub {
+    color: white;
+}
+
+#gitHub input[type="text"] {
+    color: black;
+}
+
 /** 2.Main Area
 ********************************************************/
 
@@ -370,3 +382,24 @@ div.row.bottom {
 #nameSpace {
     min-height: 65px;
 }
+
+#gitName  {
+    margin-top: 40px;
+    width: 60%;
+    text-align: left;
+    float: left;
+}
+
+#gitPic.hidden {
+    display: inline;
+}
+#gitPic {
+    height: 64px;
+    width: 64px;
+    outline: none !important;
+    border: none;
+    border-radius: 10px;
+    float: left;
+    margin: 5%;
+}
+
