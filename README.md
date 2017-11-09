@@ -31,4 +31,4 @@ and will be continuing to add functionality as we progress. </p>
 <li> Group Chat w/ Selected Users </li>
 <li> Github Activity Dashboard </li>
 <li> Youtube Subscription Updates </li>
-<li> RSS Feed newsfedd updater </li>
+
