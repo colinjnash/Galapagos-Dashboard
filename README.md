@@ -4,6 +4,7 @@
 
 <h1> Galapagos Dashboard </h1>
 
+![Alt text](https://github.com/chingu-coders/Voyage2-Turtles-03/blob/development/img/galapagos_128.png?raw="true")
 <h2>Welcome to our lightweight Dashboard app </h2>
 
 <h3> <strong> Version 0.0.3 </strong> </h3>
