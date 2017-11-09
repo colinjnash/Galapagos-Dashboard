@@ -11,7 +11,8 @@ var config = {
 firebase.initializeApp(config);
 
 const form = document.querySelector("form");
-
+//Messaging constant
+const messaging = firebase.messaging();
 
 function initApp() {
 
@@ -26,9 +27,25 @@ function initApp() {
 				isAnonymous : user.isAnonymous,
 				uid : user.uid,
 				
-			}); }
+			});
+		}
 		else {
 			// [END_EXCLUDE]
+
+//========================= MESSAGING TEMPLATE (REALLY EXPERIMENTAL) ===================== 
+
+			messaging.requestPermission()
+				.then(function() {
+					console.log('Notification permission granted.');
+				// TODO(developer): Retrieve an Instance ID token for use with FCM.
+				// ...
+				})
+				.catch(function(err) {
+					console.log('Unable to get permission to notify.', err);
+				});
+
+//END OF MESSAGING TEMPLATE
+
 			form.addEventListener("submit", postTodo);
 
 			const timeStamp = () => {
