@@ -384,7 +384,7 @@ div.row.bottom {
 }
 
 #gitName  {
-    margin-top: 40px;
+    margin: 20px auto;
     width: 60%;
     text-align: left;
     float: left;
@@ -394,13 +394,14 @@ div.row.bottom {
     display: inline;
 }
 #gitPic {
-    height: 64px;
-    width: 64px;
+    height: 50px;
+    width: 50px;
     outline: none !important;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     float: left;
     margin-top: 2%;
     margin-right: 2%;
 }
+
 
