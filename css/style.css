@@ -54,7 +54,7 @@ h1 {
     text-align: center;
 }
 button {
-    margin: 2%;
+    
 }
 
 #welcome.hidden {
@@ -404,4 +404,9 @@ div.row.bottom {
     margin-right: 2%;
 }
 
-
+#errorMsg {
+    color: red;
+    font-size: 18px;
+    font-weight: 800;
+   min-height: 30px;
+}

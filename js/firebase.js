@@ -52,6 +52,7 @@ function initApp() {
 			let todo = document.getElementById("todo").value; // gets the todo field assigns to todo
 			let user = document.getElementById("user").value; // gets user field and assigns to user
 
+
 			// if user and todo exist will push all the data to the reference of the database '/todos' as assigned from above
 			if (todo && user) {
 				let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
@@ -60,6 +61,19 @@ function initApp() {
 					user: user,
 					time: timeStamp()
 				});
+			} else {
+				error = document.querySelector('#errorMsg');
+				error.innerHTML = "Both fields are required";
+				clearAlert = () => {
+
+					window.setTimeout(() => {
+						// Todo...
+						error.innerHTML = "";
+					}, 2000);
+						
+				};
+
+				clearAlert();
 			}
 
 			document.getElementById("todo").value = ''; // clear todo and user field
