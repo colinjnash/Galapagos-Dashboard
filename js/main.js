@@ -47,6 +47,7 @@ $(document).ready(function($) {
 	accordion_menu();
 	calculator();
 	wxPop();
+	youtube();
 
 	/* Random Background Image Script
 	 *********************************************/
@@ -130,12 +131,29 @@ $(document).ready(function($) {
 	// ****************************************
 	// Youtube API Display
 	// ****************************************
+	function youtube() {
+		firebase.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+		    // User is signed in.
+		    let example = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+		    // Pull the user's name from Firebase
+		    example.on("value", function(snapshot){
+		 		let name = snapshot.val()['Name'];
+		 		console.log('name: ' + name);
+			});
+		  } else {
+		    // No user is signed in.
+		    console.log('no');
+		    break;
+		  }
+		});		
+	}
+
 
 
 	// ****************************************
 	// GitHub Display
 	// ****************************************
-
 
 	$('#gitHubSubmit').on("submit", function(event){
 		event.preventDefault();
