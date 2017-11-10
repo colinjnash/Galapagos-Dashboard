@@ -7,7 +7,7 @@ $(document).ready(function() {
 		gitHubRef.on("value", function(snapshot){
 			let user = snapshot.val()["userName"];
 			if(user !== null) {
-				console.log(user);
+			
 				let pic = `https://api.github.com/users/${user}`;
 				$.getJSON(pic, function(data, textStatus) {
 					event.preventDefault();
@@ -18,8 +18,8 @@ $(document).ready(function() {
 						return data.avatar_url;
 					}).removeClass("hidden");
 				});
-				console.log(pic);
 				let url = `https://api.github.com/users/${user}/events/public`;
+				console.log(url);
 				$.getJSON(url, function(json, textStatus) {
 					// Add activity to feed
 					console.log(json);
