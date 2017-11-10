@@ -421,6 +421,10 @@ div.row.bottom {
   width: 500px;
   margin:0 auto;
 }
+.chatFooter {  /* contains a <ul> and a <form> */
+  width: 500px;
+  margin:0 auto;
+}
 .chatContainer ul {
   list-style-type: none;
   margin:0;
