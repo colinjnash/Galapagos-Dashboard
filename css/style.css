@@ -404,3 +404,58 @@ div.row.bottom {
     margin-right: 2%;
 }
 
+/*********************************************************/
+
+
+/** Chat 
+********************************************************/
+  #messages { width: 40em; border: 1px solid grey; min-height: 10em; max-height: 20em; overflow:auto; }
+  @keyframes yellow-fade { 0% {background: #f2f2b8;} 100% {background: none;} }
+  .highlight { -webkit-animation: yellow-fade 2s ease-in 1; animation: yellow-fade 2s ease-in 1; }
+  .chatForm{
+  clear:both;
+  border-top: 1px solid #aaa;
+  padding: .5em;
+}    
+.chatContainer {  /* contains a <ul> and a <form> */
+  width: 500px;
+  margin:0 auto;
+}
+.chatContainer ul {
+  list-style-type: none;
+  margin:0;
+  padding:0;
+}
+.chatContainer ul li {
+  padding: 5px;
+  text-align: right;
+  clear:both;
+}
+.chatContainer ul li .chatBubble {
+  padding: 10px 20px;
+  margin:0 0 5px 0;
+  background-color: #cfa;
+  border-radius: 15px;
+  display:inline-block;
+  max-width: 60%;
+  text-align: left;
+}
+.chatContainer ul li .chatBubble.reply {
+  background-color: #bdf;
+  float:left;
+}
+.chatContainer ul li .notice {
+  background-color: transparent;
+  text-align: right;
+  font-style: italic;
+  font-size: smaller;
+}
+.chatContainer ul li .chatBubble img.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 25px;
+  padding: 0;
+  margin: -20px 8px 0px -30px;
+  float: left;
+  border: 1px solid #bbb;
+}
