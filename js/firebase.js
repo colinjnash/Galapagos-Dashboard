@@ -16,19 +16,19 @@ const form = document.querySelector("#todoForm");
 function initApp() {
 
 	firebase.auth().onAuthStateChanged(function(user) {
-		var ref =firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-		var contentRef =firebase.database().ref("users/" + firebase.auth().currentUser.uid +"Name");
+		var ref = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
+		var contentRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid +"Name");
 		// User is signed in.
 		contentRef.on("value", function(snapshot) {
 			if (snapshot.val() == null) {
 
 				ref.update({
-					Name :user.displayName,
-					email : user.email,
+					Name:          user.displayName,
+					email:         user.email,
 					emailVerified: user.emailVerified,
-					photoURL:  user.photoURL,
-					isAnonymous : user.isAnonymous,
-					uid : user.uid,
+					photoURL:      user.photoURL,
+					isAnonymous :  user.isAnonymous,
+					uid:           user.uid,
 				});
 			}
 		});
@@ -38,10 +38,10 @@ function initApp() {
 		const timeStamp = () => {
 			let options = {
 				month: '2-digit',
-				day: '2-digit',
-				year: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit'
+				day:   '2-digit',
+				year:  '2-digit',
+				hour:  '2-digit',
+				minute:'2-digit'
 			};
 			let now = new Date().toLocaleString('en-US', options);
 			return now;

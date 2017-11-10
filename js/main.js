@@ -127,6 +127,10 @@ $(document).ready(function($) {
 		$('#toggleList').toggleClass("hidden");
 	});
 
+	// ****************************************
+	// Youtube API Display
+	// ****************************************
+
 
 	// ****************************************
 	// GitHub Display
@@ -141,6 +145,8 @@ $(document).ready(function($) {
 		gitHubDisplay();
 		document.querySelector('#gitHubSubmit > input[type="text"]').value = '';
 	});
+
+
 
 
 // ********************WEATHER TRIAL *******************************

@@ -76,11 +76,13 @@
 				<button class="accordion">GitHub History</button>		
 				<div class="panel">
 					<div id="gitHub">
-				<form id="gitHubSubmit">
-					<label>Enter your User Name:</label>
-					<input  type="text">
-				</form>					
-				</div>
+						<form id="gitHubSubmit">
+							<label>Enter your User Name:</label>
+							<input type="text">
+							<span><img class="hidden" id="gitPic"></span>
+							<span id="gitName"></span>							
+						</form>					
+					</div>
 				</div>
 			</div>
 			<div class="openMenu">				
@@ -119,21 +121,13 @@
 	
 
 		<div class= "row bottom">
-			<div class="col-sm-12">
-				<h4 >
-				<span>
-					<img class="hidden" id="gitPic">
-				</span>
-				<span id="gitName">
-				
-				</span>
-			</h4>
-			</div> 
-			<div id="weather"><span id="wxtemp"></span><canvas id="wxIcons" width="64" height="64"></canvas>
+			<div id="weather">
+				<span id="wxtemp"></span>
+				<canvas id="wxIcons" width="64" height="64"></canvas>
 				<h4 id="cityList"></h4>
-		</div>
 			</div>
 		</div>
+	</div>
 </div>
 
 		<!-- Below are Script Tags for JQuery & Main JS, as well as FA -->
