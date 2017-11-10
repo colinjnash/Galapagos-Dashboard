@@ -18,7 +18,6 @@ $(document).ready(function($) {
 
 	// Init Firebase
 	initApp();
-
 	// Chrome Authentication Token
 	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
@@ -28,8 +27,11 @@ $(document).ready(function($) {
 		firebase.auth().signInWithCredential(provider).then(function(result){
 			var userId = firebase.auth().currentUser.uid;
 			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+
+				gitHubDisplay();
 				var username = snapshot.val().Name;
 				$('#welcomeName').html(`Hello ${username}`);	
+
 			});
 		});
 	});
@@ -45,7 +47,6 @@ $(document).ready(function($) {
 	accordion_menu();
 	calculator();
 	wxPop();
-
 
 	/* Random Background Image Script
 	 *********************************************/
@@ -140,8 +141,6 @@ $(document).ready(function($) {
 		gitHubDisplay();
 		document.querySelector('#gitHubSubmit > input[type="text"]').value = '';
 	});
-
-
 
 
 // ********************WEATHER TRIAL *******************************

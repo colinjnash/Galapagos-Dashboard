@@ -22,7 +22,7 @@ function initApp() {
 		contentRef.on("value", function(snapshot) {
 			if (snapshot.val() == null) {
 
-				ref.set({
+				ref.update({
 					Name :user.displayName,
 					email : user.email,
 					emailVerified: user.emailVerified,
