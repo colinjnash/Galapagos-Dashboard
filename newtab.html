@@ -17,7 +17,7 @@
 <body>
 	<div class="container galapagos">
 			<div id="leftNav" class="leftNav">
-				<a href="javascript:void(0)" id="closeMenu" class="closebtn"">&times;</a>
+				<a href="#" id="closeMenu" class="closebtn"">&times;</a>
 				<button class="accordion">About</button>
 				<div class="panel">
 					<p>This is our first web chrome extension built by a group!</p>
@@ -75,8 +75,12 @@
 				</div>
 				<button class="accordion">GitHub History</button>		
 				<div class="panel">
-					<p>History Report</p>
-					<p>By: This Guy-</p>
+					<div id="gitHub">
+				<form id="gitHubSubmit">
+					<label>Enter your User Name:</label>
+					<input  type="text">
+				</form>					
+				</div>
 				</div>
 			</div>
 			<div class="openMenu">				
@@ -91,7 +95,7 @@
 					<h1 id="clock">The Clock is Broken!?</h1>
       				<div class="todo-form form-group">
       				  <h2>What do you want to get done today?</h2>
-      				  <form>
+      				  <form id="todoForm">
       				    <div> 
       				      <input type="text" id="todo" placeholder="Task"/>
       				    </div>
@@ -112,12 +116,23 @@
 	      			</div>
 				</div>
 			</div>
-		</div>
+	
 
 		<div class= "row bottom">
+			<div class="col-sm-12">
+				<h4 >
+				<span>
+					<img class="hidden" id="gitPic">
+				</span>
+				<span id="gitName">
+					Github Name Here
+				</span>
+			</h4>
+			</div> 
 			<div id="weather"><span id="wxtemp"></span><canvas id="wxIcons" width="64" height="64"></canvas>
 				<h4 id="cityList"></h4>
 		</div>
+			</div>
 		</div>
 </div>
 
@@ -130,6 +145,8 @@
 		<script src='js/wxPop.js'></script>
 		<script src='js/skycons.js'></script>
 		<script src='js/calculator.js'></script>
+		<script src='js/gitHub.js'></script>
+
 		<script src="https://use.fontawesome.com/3cc79e2fae.js"></script>
 	</body>
 	

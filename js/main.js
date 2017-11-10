@@ -46,6 +46,7 @@ $(document).ready(function($) {
 	calculator();
 	wxPop();
 
+
 	/* Random Background Image Script
 	 *********************************************/
 	function changeBackground() {
@@ -124,6 +125,23 @@ $(document).ready(function($) {
 	$('#toDoTitle').on('click', function() {
 		$('#toggleList').toggleClass("hidden");
 	});
+
+
+	// ****************************************
+	// GitHub Display
+	// ****************************************
+
+
+	$('#gitHubSubmit').on("submit", function(event){
+		event.preventDefault();
+		let gitHubRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid +"/gitHub");
+		let userName = $('#gitHubSubmit > input[type="text"]').val();
+		gitHubRef.set({userName: userName});
+		gitHubDisplay();
+		document.querySelector('#gitHubSubmit > input[type="text"]').value = '';
+	});
+
+
 
 
 // ********************WEATHER TRIAL *******************************

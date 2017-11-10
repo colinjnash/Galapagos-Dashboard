@@ -10,7 +10,7 @@ var config = {
 
 firebase.initializeApp(config);
 
-const form = document.querySelector("form");
+const form = document.querySelector("#todoForm");
 
 
 function initApp() {
