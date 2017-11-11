@@ -3,7 +3,7 @@
     "name": "Galapagos Dashboard",
     "short_name": "Galapagos",
     "author": "Colin Nash, Seth Barthen, Jay Scott, (Chingu)",
-    "version": "0.0.3",
+    "version": "0.0.5",
  "content_security_policy":"script-src 'self' https://api.darksky.net https://maxcdn.bootstrapcdn.com/ https://use.fontawesome.com https://www.gstatic.com/ https://ipinfo.io/  https://*.firebaseio.com https://www.googleapis.com; object-src 'self'",
   "description": "Lightweight Dashboard App",
     "content_scripts": [

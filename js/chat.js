@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var messagesList = document.getElementById('messages'),
-      textInput = document.getElementById('text'),
-      sendButton = document.getElementById('send');
-	  var username = '';
+	var messagesList = document.getElementById('messages'),
+		textInput = document.getElementById('text'),
+		sendButton = document.getElementById('send');
+	var username = '';
 	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
 	// Use the token.
@@ -17,26 +17,36 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		});
 	});
-      
-  var databaseRef = firebase.database().ref("chat/");
-  sendButton.addEventListener('click', function(evt) {
-    var chat = { name: username, message: textInput.value };
-    databaseRef.push().set(chat);
-    textInput.value = '';
-  });
-  databaseRef.on('child_added', function(snapshot) {
-    var chat = snapshot.val();
-    addMessage(chat);
-  });
+			
+	var databaseRef = firebase.database().ref("chat/");
+	sendButton.addEventListener('click', function(evt) {
+		var chat = { name: username, message: textInput.value };
+		databaseRef.push().set(chat);
+		textInput.value = '';
+	});
 
- function scrollToBottom (id) {
-   var div = document.getElementById(id);
-   div.scrollTop = div.scrollHeight - div.clientHeight;
-  }
-  
-  function addMessage(chat) {
-    let chatItem = document.getElementById("messages");
-    chatItem.innerHTML += '<li><div class="chatBubble reply"><small>'+ chat.name + ' says,</small><br>' + chat.message + '</div></li>';
-    scrollToBottom("messages");
-  }
+	textInput.onkeydown = function(e){
+		if(e.keyCode == 13){
+		// submit
+			var chat = { name: username, message: textInput.value };
+			databaseRef.push().set(chat);
+			textInput.value = '';
+		}
+	};
+
+	databaseRef.on('child_added', function(snapshot) {
+		var chat = snapshot.val();
+		addMessage(chat);
+	});
+
+	function scrollToBottom (id) {
+		var div = document.getElementById(id);
+		div.scrollTop = div.scrollHeight - div.clientHeight;
+	}
+	
+	function addMessage(chat) {
+		let chatItem = document.getElementById("messages");
+		chatItem.innerHTML += '<li><div class="chatBubble reply"><strong>'+ chat.name + ':</strong><span class="msgContent">' + chat.message + '</span></div></li>';
+		scrollToBottom("messages");
+	}
 });
