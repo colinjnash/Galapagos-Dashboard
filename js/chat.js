@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		textInput = document.getElementById('text'),
 		sendButton = document.getElementById('send');
 	var username = '';
+	channelInput = document.getElementById('channelInput');
+	var channelID = '';
+
+
+
 	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
 	// Use the token.
@@ -17,7 +22,32 @@ document.addEventListener('DOMContentLoaded', function() {
 			});
 		});
 	});
-			
+	
+	//  *****************************************
+	// Chat Channel Code
+	//  *****************************************	
+	var channelRef = firebase.database().ref("chat/" + "channel");
+	channelInput.addEventListener('keypress', function(e) {
+		if(e.keyCode == 13 && channelInput.value != ''){
+		// submit
+			e.preventDefault();
+		
+			let channel = channelInput.value;
+			channelRef.push().update({channel:channel});
+			channelInput.value = '';
+		}
+	});
+	/* Act on the event ******************TESTING FOR CHANNEL PROCESSING*/
+	channelRef.on("value", function(snapshot) {
+		channelID = snapshot.val().channel;
+		console.log(channelID);
+	}, function (errorObject) {
+		console.log("The read failed: " + errorObject.code);
+	});
+
+	//  *****************************************
+	// Chat Relay Code
+	//  *****************************************
 	var databaseRef = firebase.database().ref("chat/");
 	sendButton.addEventListener('click', function(evt) {
 		var chat = { name: username, message: textInput.value };
@@ -26,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 
 	textInput.onkeydown = function(e){
-		if(e.keyCode == 13){
+		if(e.keyCode == 13 && textInput.value != ''){
 		// submit
 			var chat = { name: username, message: textInput.value };
 			databaseRef.push().set(chat);
@@ -49,4 +79,5 @@ document.addEventListener('DOMContentLoaded', function() {
 		chatItem.innerHTML += '<li><div class="chatBubble reply"><strong>'+ chat.name + ':</strong><span class="msgContent">' + chat.message + '</span></div></li>';
 		scrollToBottom("messages");
 	}
+	
 });
