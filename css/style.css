@@ -276,6 +276,17 @@ div.panel > ul > li {
 }
 
 
+#errorMsg {
+    color: red;
+    font-size: 18px;
+    font-weight: 800;
+   min-height: 30px;
+       text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
+    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+    0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
 
 
 
@@ -409,7 +420,7 @@ div.row.bottom {
 
 /** Chat 
 ********************************************************/
-  #messages { width: 40em; border: 1px solid grey; min-height: 10em; max-height: 20em; overflow:auto; }
+  #messages { width: 40em;  solid grey; min-height: 10em; max-height: 10em; overflow:auto; }
   @keyframes yellow-fade { 0% {background: #f2f2b8;} 100% {background: none;} }
   .highlight { -webkit-animation: yellow-fade 2s ease-in 1; animation: yellow-fade 2s ease-in 1; }
   .chatForm{
@@ -418,25 +429,29 @@ div.row.bottom {
   padding: .5em;
 }    
 .chatContainer {  /* contains a <ul> and a <form> */
-  width: 500px;
   margin:0 auto;
+  background-color: rgba(0, 0, 0, .5);
+  outline: none;
+  border: none !important;
 }
 .chatFooter {  /* contains a <ul> and a <form> */
-  width: 500px;
   margin:0 auto;
+  width: 60%;
 }
 .chatContainer ul {
   list-style-type: none;
   margin:0;
   padding:0;
+  outline: none;
 }
 .chatContainer ul li {
   padding: 5px;
   text-align: right;
   clear:both;
+  font-size: .8em;
 }
 .chatContainer ul li .chatBubble {
-  padding: 10px 20px;
+  padding: 5px 10px;
   margin:0 0 5px 0;
   background-color: #cfa;
   border-radius: 15px;
@@ -464,13 +479,11 @@ div.row.bottom {
   border: 1px solid #bbb;
 }
 
-#errorMsg {
-    color: red;
-    font-size: 18px;
-    font-weight: 800;
-   min-height: 30px;
-       text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
-    text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
-    0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
+span.msgContent  {
+    margin-left: 5px;
+}
+
+#text {
+   background-color: rgba(255,255,255, .5);
+   color: black;
 }
