@@ -98,7 +98,9 @@ $(document).ready(function($) {
 		let key = content[0].replace(/((\s*\S+)*)\s*/, "$1");
 		$(this).parent().fadeOut(300, function() {
 
-			// ***************************To Do List FIREBASE 
+			// ***************************
+			// To Do List FIREBASE 
+			// ***************************
 
 			var ref = firebase.database().ref('/users/'+ uid + "/todos");
 			var query = ref.orderByChild('todo').equalTo(key);
