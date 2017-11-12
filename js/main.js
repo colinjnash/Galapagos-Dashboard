@@ -23,24 +23,25 @@ $(document).ready(function($) {
 	calculator();
 	wxPop();	
 	toDo();
+	initFirebase();
 
 
 	// Chrome Authentication Token
-	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	// chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
-	// Use the token.
-		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
-		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
-		firebase.auth().signInWithCredential(provider).then(function(result){
-			var userId = firebase.auth().currentUser.uid;
-			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-				gitHubDisplay();
-				var username = snapshot.val().Name;
-				$('#welcomeName').html(`Hello ${username}`);	
+	// // Use the token.
+	// 	var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
+	// 	// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+	// 	firebase.auth().signInWithCredential(provider).then(function(result){
+	// 		var userId = firebase.auth().currentUser.uid;
+	// 		return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+	// 			gitHubDisplay();
+	// 			var username = snapshot.val().Name;
+	// 			$('#welcomeName').html(`Hello ${username}`);	
 
-			});
-		});
-	});
+	// 		});
+	// 	});
+	// });
 
 	$('body').hide().fadeIn('slow');
 	$(document).ready(function() {

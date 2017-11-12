@@ -8,20 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
+	// chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
-	// Use the token.
-		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
-		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
-		firebase.auth().signInWithCredential(provider).then(function(result){
-			var userId = firebase.auth().currentUser.uid;
-			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-				username = snapshot.val().Name;	
-				console.log(username);
+	// // Use the token.
+	// 	var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
+	// 	// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
+	// 	firebase.auth().signInWithCredential(provider).then(function(result){
+	// 		var userId = firebase.auth().currentUser.uid;
+	// 		return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+	// 			username = snapshot.val().Name;	
+	// 			console.log(username);
 
-			});
-		});
-	});
+	// 		});
+	// 	});
+	// });
 	
 	//  *****************************************
 	// Chat Channel Code

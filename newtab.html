@@ -101,10 +101,20 @@
 		<div class="container-fluid">
 			<div class="row text-center">
 				<div class="col-sm-offset-2 col-sm-8 mainBody hidden" id="welcome">
+					<div id="example0">
+						<form>
+							<input type="email" id="email">
+							<input type="password" name="password" id="password">
+							<input type="submit" id="register" value="Register">
+							<input type="submit" id="signIn" value="Sign In">
+							<input type="submit" id="signInGoogle" value="Google Sign In">
+						</form>
+					</div>
 					<div id="nameSpace">
-					<h1 id="welcomeName">  </h1>
+						<h1 id="welcomeName"></h1>
 					</div>
 					<h1 id="clock">The Clock is Broken!?</h1>
+
       				<div class="todo-form form-group">
       				  <h2>What do you want to get done today?</h2>
       				  <form id="todoForm">
@@ -122,9 +132,10 @@
 				
 				<div id="rightNav" class="col-sm-2 text-right rightNav">
 	      			<div>
-	      			  <h4 id="toDoTitle">Todos</h4>
-	      			  <div id="toggleList">
-	      			  <ul id="todos"></ul>
+	      				<p id="signInStatus"></p><button id="logInOut">Log Out</button>
+						<h4 id="toDoTitle">Todos</h4>
+						<div id="toggleList">
+						<ul id="todos"></ul>
 	      			</div>
 	      			</div>
 				</div>
@@ -168,6 +179,7 @@
 		<script src='js/calculator.js'></script>
 		<script src='js/gitHub.js'></script>
 		<script src='js/chat.js'></script>
+		<script src='js/toDo.js'></script>
 
 		<script src="https://use.fontawesome.com/3cc79e2fae.js"></script>
 	</body>

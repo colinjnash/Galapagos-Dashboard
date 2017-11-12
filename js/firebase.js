@@ -1,4 +1,5 @@
 
+
 /*  Initialize Firebase
 *********************************************************/
 var config = {
@@ -13,103 +14,89 @@ var config = {
 firebase.initializeApp(config);
 
 
-/*  Login with standard Username and Password
+/*  Sign-In Process
 *********************************************************/
-function loginStandard() {
-	const login = document.getElementById('loginSubmit');
-	login.addEventListener('click', function(){
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-			let errorCode = error.code;
-			let errorMsg = error.message;
-			if ( errorCode === 'auth/wrong-passowrd' ) {
-				alert(errorMsg);
-			}
-		});		
+function register() {
+	const email = document.getElementById('email').value;
+	const password = document.getElementById('password').value;	
+
+	if ( email.length < 4 ||
+		 email.indexOf('@') === -1 ) {
+		alert('Please enter in a valid email.');
+	}
+
+	if ( password.length < 4 ) {
+		alert('Password must be longer than 4 characters.');
+	}			
+	firebase.auth().createUserWithEmailAndPassword(email, password).cath(function(error) {
+		let errorCode = error.code;
+		let errorMsg = error.message;		
+		if ( errorCode ) {
+			alert(errorMsg);
+		}
+		console.log(error);
 	});	
 }
 
-/*  Function: To-Do Add to List 
-*********************************************************/
-const form = document.querySelector("#todoForm");
-function toDo() {
-	
-
-	firebase.auth().onAuthStateChanged(function(user) {
-		var ref = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
-		var contentRef = firebase.database().ref("users/" + firebase.auth().currentUser.uid +"Name");
-		// User is signed in.
-		contentRef.on("value", function(snapshot) {
-			if (snapshot.val() == null) {
-
-				ref.update({
-					Name:          user.displayName,
-					email:         user.email,
-					emailVerified: user.emailVerified,
-					photoURL:      user.photoURL,
-					isAnonymous :  user.isAnonymous,
-					uid:           user.uid,
-				});
-			}
-		});
-		// [END_EXCLUDE]
-		form.addEventListener("submit", postTodo);
-
-		const timeStamp = () => {
-			let options = {
-				month: '2-digit',
-				day:   '2-digit',
-				year:  '2-digit',
-				hour:  '2-digit',
-				minute:'2-digit'
-			};
-			let now = new Date().toLocaleString('en-US', options);
-			return now;
-		};
-		// Add todo to firebase database
-		function postTodo(e) {
-			e.preventDefault();
-			let todo = document.getElementById("todo").value; // gets the todo field assigns to todo
-			let user = document.getElementById("user").value; // gets user field and assigns to user
-
-
-			// if user and todo exist will push all the data to the reference of the database '/todos' as assigned from above
-			if (todo && user) {
-				let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
-				todoref.push({
-					todo: todo,
-					user: user,
-					time: timeStamp()
-				});
-			} else {
-				error = document.querySelector('#errorMsg');
-				error.innerHTML = "Both fields are required";
-				clearAlert = () => {
-
-					window.setTimeout(() => {
-						// Todo...
-						error.innerHTML = "";
-					}, 2000);
-						
-				};
-
-				clearAlert();
-			}
-
-			document.getElementById("todo").value = ''; // clear todo and user field
-			document.getElementById("user").value = '';
+function signIn() {
+	if ( firebase.auth().currentUser ) {
+		firebase.auth().signOut();
+	} else {
+		const email = document.getElementById('email').value;
+		const password = document.getElementById('password').value;	
+		if ( email.length < 4 ||
+			 email.indexOf('@') === -1 ) {
+			alert('Please enter in a valid email.');
 		}
 
-		// This is a firebase command to grab the data then call addTodo to do something with all data in the database
-		let todoref = firebase.database().ref("users/" + firebase.auth().currentUser.uid + "/todos");
-		todoref.on("child_added", function(snapshot) {
-			let todo = snapshot.val(); // firebase returns a snapshot of the database and assigns that to todo value
-			addTodo(todo.todo, todo.user, todo.time);
-		});
+		if ( password.length < 4 ) {
+			alert('Password must be longer than 4 characters.');
+		}
 
-		// adds the results to the homepage
-		const addTodo = (todo, user, timeStamp) => {
-			let todos = document.getElementById("todos");
-			todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
-		};		
-	}); //end of auth change s
-} // end of toDo function
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(){
+			let errorCode = error.code;
+			let errorMsg = error.message;		
+			if ( errorCode ) {
+				alert(errorMsg);
+			}
+			console.log(error);
+		});
+	}	
+}
+
+// function googleSignIn() {	
+// 	let provider = new firebase.auth.GoogleAuthProvider();
+// 	firebase.auth().signInWithRedirect(provider);
+
+// }
+
+function signOut() {
+	if ( firebase.auth().currentUser ) {
+		firebase.auth().signOut();
+	}
+	document.getElementById('signInStatus').textContent = 'Logged Out';
+}
+
+function initFirebase() {
+	firebase.auth().onAuthStateChanged(function(user) {
+		if ( user ) {
+			let displayName   = user.displayName;
+			let email         = user.email;
+			let emailVerified = user.emailVerified;
+			let photoURL      = user.photoURL;
+			let isAnonymous   = user.isAnonymous;
+			let uid           = user.uid;
+			let providerData  = user.providerData;
+
+			document.getElementById('signInStatus').textContent = 'Signed in as: ' + displayName;
+		}
+		//document.getElementById('statusMonitor').textCenter = 'Signed In';
+	});
+
+	document.getElementById('register').addEventListener('click', register, false);
+	document.getElementById('signIn').addEventListener('click', signIn, false);
+	document.getElementById('logInOut').addEventListener('click', signOut, false);
+	// document.getElementById('signInGoogle').addEventListener('click', googleSignIn, false);
+}
+
+
