@@ -16,8 +16,15 @@
 // Fade in the div
 $(document).ready(function($) {
 
-	// Init Firebase
+	// Execute Scripts Here!
+	changeBackground();
+	buildClock();
+	accordion_menu();
+	calculator();
+	wxPop();	
 	initApp();
+
+	
 	// Chrome Authentication Token
 	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
@@ -41,12 +48,7 @@ $(document).ready(function($) {
 		$('#welcome').removeClass('hidden');
 	});
 
-	// Execute Scripts Here!
-	changeBackground();
-	buildClock();
-	accordion_menu();
-	calculator();
-	wxPop();
+
 
 	/* Random Background Image Script
 	 *********************************************/
