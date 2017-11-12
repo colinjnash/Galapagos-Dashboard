@@ -1,4 +1,6 @@
-// Initialize Firebase
+
+/*  Initialize Firebase
+*********************************************************/
 var config = {
 	apiKey: 'AIzaSyC5Z-AsLjvNuZGLAD-rlevGBpWTfkjs-9c',
 	authDomain: 'turtles3-dashboard.firebaseapp.com',
@@ -10,10 +12,27 @@ var config = {
 
 firebase.initializeApp(config);
 
+
+/*  Login with standard Username and Password
+*********************************************************/
+function loginStandard() {
+	const login = document.getElementById('loginSubmit');
+	login.addEventListener('click', function(){
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			let errorCode = error.code;
+			let errorMsg = error.message;
+			if ( errorCode === 'auth/wrong-passowrd' ) {
+				alert(errorMsg);
+			}
+		});		
+	});	
+}
+
+/*  Function: To-Do Add to List 
+*********************************************************/
 const form = document.querySelector("#todoForm");
-
-
-function initApp() {
+function toDo() {
+	
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		var ref = firebase.database().ref("users/" + firebase.auth().currentUser.uid);
@@ -91,12 +110,6 @@ function initApp() {
 		const addTodo = (todo, user, timeStamp) => {
 			let todos = document.getElementById("todos");
 			todos.innerHTML += '<li class="todoli" >' + '<input type="checkbox">' + `${todo} - ${user}` + '<span class="delete">' + ' ' + '<i class="fa fa-trash"></i></span>' + '</li>';
-		};
-		
-
-	});
-
-
-
-
-}
+		};		
+	}); //end of auth change s
+} // end of toDo function

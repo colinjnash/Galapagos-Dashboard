@@ -22,9 +22,9 @@ $(document).ready(function($) {
 	accordion_menu();
 	calculator();
 	wxPop();	
-	initApp();
+	toDo();
 
-	
+
 	// Chrome Authentication Token
 	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
 	
@@ -34,7 +34,6 @@ $(document).ready(function($) {
 		firebase.auth().signInWithCredential(provider).then(function(result){
 			var userId = firebase.auth().currentUser.uid;
 			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-
 				gitHubDisplay();
 				var username = snapshot.val().Name;
 				$('#welcomeName').html(`Hello ${username}`);	
