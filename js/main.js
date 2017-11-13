@@ -28,9 +28,9 @@ $(document).ready(function($) {
 			var userId = firebase.auth().currentUser.uid;
 			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 
-				gitHubDisplay();
-				var username = snapshot.val().Name;
-				$('#welcomeName').html(`Hello ${username}`);	
+				// gitHubDisplay();
+				var welcomeName = snapshot.val().Name;
+				$('#welcomeName').html(`Hello ${welcomeName}`);	
 
 			});
 		});
