@@ -28,7 +28,7 @@ function register() {
 	if ( password.length < 4 ) {
 		alert('Password must be longer than 4 characters.');
 	}			
-	firebase.auth().createUserWithEmailAndPassword(email, password).cath(function(error) {
+	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 		let errorCode = error.code;
 		let errorMsg = error.message;		
 		if ( errorCode ) {
@@ -36,6 +36,9 @@ function register() {
 		}
 		console.log(error);
 	});	
+	$('#logInOut').removeClass('hidden');
+	$('#submitForms').addClass('hidden');
+	resetText();
 }
 
 function signIn() {
@@ -59,8 +62,9 @@ function signIn() {
 		if ( errorCode ) {
 			alert(errorMsg);
 		}
-		console.log(error);
+		console.log(error);		
 	});	
+	document.getElementById('signInStatus').textContent = 'Signed in as: ' + displayName;
 } //end signin
 
 // function googleSignIn() {	
@@ -73,7 +77,9 @@ function signOut() {
 	if ( firebase.auth().currentUser ) {
 		firebase.auth().signOut();
 	}
-	document.getElementById('signInStatus').textContent = 'Logged Out';
+	document.getElementById('signInStatus').textContent = '';
+	$('#logInOut').addClass('hidden');
+	$('#submitForms').removeClass('hidden');	
 }
 
 function initFirebase() {
@@ -85,11 +91,12 @@ function initFirebase() {
 			let photoURL      = user.photoURL;
 			let isAnonymous   = user.isAnonymous;
 			let uid           = user.uid;
-			let providerData  = user.providerData;
-
-			document.getElementById('signInStatus').textContent = 'Signed in as: ' + displayName;
+			let providerData  = user.providerData;	
+			document.getElementById('signInStatus').textContent = 'Signed in as: ' + email;		
 		}
-		//document.getElementById('statusMonitor').textCenter = 'Signed In';
+		console.log('user' + user);
+		console.log('display' + firebase.auth().currentUser.email);
+		//document.getElementById('statusMonitor').textCenter = '';
 	});
 
 	document.getElementById('register').addEventListener('click', register, false);
@@ -99,3 +106,9 @@ function initFirebase() {
 }
 
 
+/* Functions
+************************************************************/
+function resetText() {
+	email.value = '';
+	password.value = '';
+}

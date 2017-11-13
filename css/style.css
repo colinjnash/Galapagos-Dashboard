@@ -240,9 +240,9 @@ div.panel > ul > li {
     margin-top: 5%;
 }
 
-.mainBody label {
+/*.mainBody label {
     margin-top: 5%;
-}
+}*/
 
 .inputStyle h2 {
     color: #fff;
@@ -288,8 +288,12 @@ div.panel > ul > li {
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
-#fbLoginArea {
-    color: #000;
+.move-left {
+    margin-left: 25% !important;
+}
+
+.form-control {
+    width: 50%;
 }
 
 #signInStatus {

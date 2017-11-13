@@ -101,15 +101,27 @@
 		<div class="container-fluid">
 			<div class="row text-center">
 				<div class="col-sm-offset-2 col-sm-8 mainBody hidden" id="welcome">
-					<div id="fbLoginArea">
-						<form>
-							<input type="email" id="email">
-							<input type="password" name="password" id="password">
-							<input type="submit" id="register" value="Register">
-							<input type="submit" id="signIn" value="Sign In">
-							<input type="submit" id="signInGoogle" value="Google Sign In">
-						</form>
-					</div>
+					<form class="form-horizontal" id="submitForms">
+					  <div class="form-group move-left">
+					    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control" id="email" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="form-group move-left">
+					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="password" placeholder="Password">
+					    </div>
+					  </div>					
+					  <div class="form-group" >
+					    <div class="col-sm-offset-1 col-sm-10">
+					      <button type="submit" id="signIn" class="btn btn-default">Sign in</button>
+					      <button type="submit" id="register" class="btn btn-default">Register</button>
+					      <button type="submit" id="signInGoogle" class="btn btn-default">Google Sign in</button>
+					    </div>
+					  </div>
+					</form>
 					<div id="nameSpace">
 						<h1 id="welcomeName"></h1>
 					</div>
@@ -132,7 +144,7 @@
 				
 				<div id="rightNav" class="col-sm-2 text-right rightNav">
 	      			<div>
-	      				<p id="signInStatus">Hello</p><button id="logInOut">Log Out</button>
+	      				<p id="signInStatus"></p><button id="logInOut" class="hidden">Log Out</button>
 						<h4 id="toDoTitle">Todos</h4>
 						<div id="toggleList">
 						<ul id="todos"></ul>
