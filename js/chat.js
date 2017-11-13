@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 				username = snapshot.val().Name;	
 				console.log(username);
+				let welcome = document.getElementById('welcomeName');
+				welcome.innerHTML = `Welcome ${username}`;
 
 			});
 		});
@@ -36,14 +38,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			channelRef.push().update({channel:channel});
 			channelInput.value = '';
 		}
+		channelRef.on("value", function(snapshot) {
+			channelID = snapshot.val().channel;
+			if (channelID !== null) {
+				console.log(channelID);
+			}
+		}, function (errorObject) {
+			console.log("The read failed: " + errorObject.code);
+		});
 	});
-	/* Act on the event ******************TESTING FOR CHANNEL PROCESSING*/
-	channelRef.on("value", function(snapshot) {
-		channelID = snapshot.val().channel;
-		console.log(channelID);
-	}, function (errorObject) {
-		console.log("The read failed: " + errorObject.code);
-	});
+
+	
 
 	//  *****************************************
 	// Chat Relay Code

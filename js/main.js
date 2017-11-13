@@ -26,35 +26,19 @@ $(document).ready(function($) {
 
 	
 	// Chrome Authentication Token
-	chrome.identity.getAuthToken({ 'interactive': true }, function(token) {
-	
-	// Use the token.
-		var provider = new firebase.auth.GoogleAuthProvider().credential(null,token);
-		// var credential = firebase.auth.GoogleAuthProvider.credential(null, token);
-		firebase.auth().signInWithCredential(provider).then(function(result){
-			var userId = firebase.auth().currentUser.uid;
-			return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-
-				gitHubDisplay();
-				var username = snapshot.val().Name;
-				$('#welcomeName').html(`Hello ${username}`);	
-
-			});
-		});
-	});
 
 	$('body').hide().fadeIn('slow');
-	$(document).ready(function() {
-		$('#welcome').removeClass('hidden');
-	});
+	$('#welcome').removeClass('hidden');
+
+
 
 
 
 	/* Random Background Image Script
 	 *********************************************/
 	function changeBackground() {
-		let arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg'];
-		$('body').css("background-image", "url('img/" + arr[Math.floor((Math.random() * 3))] + "')");
+		let arr = ['img0.jpg', 'img1.jpg', 'img2.jpg', 'img3.jpg', 'img4.jpg', 'img5.jpg', 'img6.jpg', 'img7.jpg', 'img8.jpg'];
+		$('body').css("background-image", "url('img/" + arr[Math.floor((Math.random() * 9))] + "')");
 	}
 	
 
