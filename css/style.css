@@ -95,13 +95,13 @@ button {
     top: 0;
     background-color: rgba(0, 0, 0, .5);
     text-shadow: 0 1px 5px rgba(0, 0, 0, .1);
-    overflow-x: hidden;
-    padding-top: 60px;
+    overflow-x: hidden;    
     transition: 0.5s;
 }
 
 .leftNav {
     left: 0;
+    padding-top: 60px;
 }
 
 .rightNav {
@@ -109,6 +109,7 @@ button {
     width: 300px;
     background: transparent;
     min-height: 25%;
+    padding-top: 0;
 }
 
 .leftNav a,
@@ -287,7 +288,24 @@ div.panel > ul > li {
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
+#fbLoginArea {
+    color: #000;
+}
 
+#signInStatus {
+    color: #fff;
+    display: inline;
+}
+
+#logInOut {
+    background: transparent;
+    color: #fff;
+    border: none;
+}
+
+#logInOut:hover {
+    color: blue;
+}
 
 
 /** 3. To Do List

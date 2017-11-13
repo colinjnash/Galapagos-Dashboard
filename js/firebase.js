@@ -41,28 +41,27 @@ function register() {
 function signIn() {
 	if ( firebase.auth().currentUser ) {
 		firebase.auth().signOut();
-	} else {
-		const email = document.getElementById('email').value;
-		const password = document.getElementById('password').value;	
-		if ( email.length < 4 ||
-			 email.indexOf('@') === -1 ) {
-			alert('Please enter in a valid email.');
-		}
+	} 
+	const email = document.getElementById('email').value;
+	const password = document.getElementById('password').value;	
+	if ( email.length < 4 ||
+		 email.indexOf('@') === -1 ) {
+		alert('Please enter in a valid email.');
+	}
 
-		if ( password.length < 4 ) {
-			alert('Password must be longer than 4 characters.');
-		}
+	if ( password.length < 4 ) {
+		alert('Password must be longer than 4 characters.');
+	}
 
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(){
-			let errorCode = error.code;
-			let errorMsg = error.message;		
-			if ( errorCode ) {
-				alert(errorMsg);
-			}
-			console.log(error);
-		});
-	}	
-}
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(){
+		let errorCode = error.code;
+		let errorMsg = error.message;		
+		if ( errorCode ) {
+			alert(errorMsg);
+		}
+		console.log(error);
+	});	
+} //end signin
 
 // function googleSignIn() {	
 // 	let provider = new firebase.auth.GoogleAuthProvider();
