@@ -10,49 +10,35 @@ function calculator() {
 	let counter = 0;
 	let stageArr = [];
 	let eqArr = [];
-	
 
-	for ( let i = 0; i < buttons.length; i ++ ) {
-		buttons[i].onclick = function() {
-			switch(this.value) {
-			case "c":
-				clear();						
-				break;
-			case "=":
-				evaluate(eh);
-				break;
-			case ".":
-				addPoint();
-				break;
-			case "bs":
-				backSpace();
-				break;
-			case "+":						
-				addition();												
-				break;
-			case "-":
-				subtraction();						
-				break;					
-			case "*":
-				multiplication();						
-				break;											
-			case "/":
-				division();					
-				break;
-			case "%":
-				modulus();					
-				break;						
-			default:
-				stageArr.push(this.value);
-				console.log('stgArr after keystroke: ' + stageArr);
-				screen = screen.concat(this.value);
-				setMainText(screen);
-				setSubText(screen);
-				break;
 
-			}
+	for ( let i = 0; i < buttons.length; i++ ) {
+		buttons[i].onclick = function btnFn(btn) {
+			let btns = {
+				'c':       () => { console.log('clear'); clear(); },
+				'bs':      () => { backSpace(); },
+				'.':       () => { addPoint(); },
+				'+':       () => { addition(); },
+				'-':       () => { subtraction();	},
+				'*':       () => { multiplication(); },
+				'/':       () => { division(); },
+				'%':       () => { modulus(); },
+				'default': () => { defaultNum(btn); }
+			};
+
+			return (btns[btn] || btns['default']);
 		};
 	}
+
+
+
+	function defaultNum(num) {
+		stageArr.push(num);
+		console.log('stgArr after keystroke: ' + stageArr);
+		screen = screen.concat(num);
+		setMainText(screen);
+		setSubText(screen);
+	}	
 
 	function setMainText(n) {
 		window_panel.innerHTML = n;

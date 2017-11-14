@@ -1,2 +1,5 @@
 Thumbs.db
 /node_modules
+.eslintrc.js
+.eslintrc.json
+package.json
