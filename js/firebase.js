@@ -64,14 +64,20 @@ function signIn() {
 		}
 		console.log(error);		
 	});	
-	document.getElementById('signInStatus').textContent = 'Signed in as: ' + displayName;
+	document.getElementById('signInStatus').textContent = 'Signed in as: ' + user.displayName;
+	$('#logInOut').removeClass('hidden');
 } //end signin
 
-// function googleSignIn() {	
-// 	let provider = new firebase.auth.GoogleAuthProvider();
-// 	firebase.auth().signInWithRedirect(provider);
+function googleSignIn() {	
+	let provider = new firebase.auth.GoogleAuthProvider();
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+		var token = result.credential.accessToken;
+	});
 
-// }
+	console.log('Token: ' + token);
+	console.log('User: '+ result.user);
+
+}
 
 function signOut() {
 	if ( firebase.auth().currentUser ) {
@@ -92,17 +98,15 @@ function initFirebase() {
 			let isAnonymous   = user.isAnonymous;
 			let uid           = user.uid;
 			let providerData  = user.providerData;	
-			document.getElementById('signInStatus').textContent = 'Signed in as: ' + email;		
+			document.getElementById('signInStatus').textContent = 'Signed in as: ' + displayName;		
 		}
-		console.log('user' + user);
-		console.log('display' + firebase.auth().currentUser.email);
 		//document.getElementById('statusMonitor').textCenter = '';
 	});
 
 	document.getElementById('register').addEventListener('click', register, false);
 	document.getElementById('signIn').addEventListener('click', signIn, false);
 	document.getElementById('logInOut').addEventListener('click', signOut, false);
-	// document.getElementById('signInGoogle').addEventListener('click', googleSignIn, false);
+	document.getElementById('signInGoogle').addEventListener('click', googleSignIn, false);
 }
 
 
