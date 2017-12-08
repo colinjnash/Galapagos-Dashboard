@@ -1,8 +1,8 @@
-# Voyage2-Turtles-03
 
 
 
-<h1> Galapagos Dashboard </h1>
+
+# Galapagos Dashboard
 
 ![Alt text](https://github.com/chingu-coders/Voyage2-Turtles-03/blob/development/img/galapagos_128.png?raw="true")
 <h2>Welcome to our lightweight Dashboard app </h2>
